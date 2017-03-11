@@ -105,7 +105,7 @@
 
 静态化的要求
 1231.只能在顶层作用域完成加载(不允许函数内，分支块内)2.不能">
-<meta property="og:updated_time" content="2017-03-11T09:10:28.000Z">
+<meta property="og:updated_time" content="2017-03-11T10:20:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6--模块化">
 <meta name="twitter:description" content="ES6 Module 设计思想与之前社区规范 CommonJS 和 AMD 相比，ES6 的 Module 设计思想强调静态化
@@ -418,6 +418,11 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;...&#125;;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> foo;</div><div class="line"><span class="comment">//任意变量名皆可</span></div><div class="line"><span class="keyword">import</span> bar <span class="keyword">from</span> <span class="string">'foo'</span>;</div></pre></td></tr></table></figure>
 <p>本质上是将输出的变量赋值给了一个叫做<code>default</code>的变量，在导入时，default可以被任意命名</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//以下语句等价</span></div><div class="line"><span class="keyword">export</span> &#123;add <span class="keyword">as</span> <span class="keyword">default</span>&#125;;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> add;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">var</span> a = <span class="number">1</span>; <span class="comment">//Error！default本身就是赋值，不能跟声明语句</span></div></pre></td></tr></table></figure>
+<h1 id="export-与-import-复合写法"><a href="#export-与-import-复合写法" class="headerlink" title="export 与 import 复合写法"></a>export 与 import 复合写法</h1><p><code>export { foo, bar } from &#39;my_module&#39;;</code></p>
+<p>等价于</p>
+<pre><code>import { foo, bar } from &apos;my_module&apos;;
+export { foo, bar };
+</code></pre>
       
     </div>
 
@@ -466,6 +471,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/11/ES6-块级作用域/" rel="prev" title="ES6-块级作用域">
+                ES6-块级作用域 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -541,7 +550,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -600,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-Module-设计思想"><span class="nav-number">1.</span> <span class="nav-text">ES6 Module 设计思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普通-export-import-语法"><span class="nav-number">2.</span> <span class="nav-text">普通 export import 语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#export-default-命令"><span class="nav-number">3.</span> <span class="nav-text">export default 命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-Module-设计思想"><span class="nav-number">1.</span> <span class="nav-text">ES6 Module 设计思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普通-export-import-语法"><span class="nav-number">2.</span> <span class="nav-text">普通 export import 语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#export-default-命令"><span class="nav-number">3.</span> <span class="nav-text">export default 命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#export-与-import-复合写法"><span class="nav-number">4.</span> <span class="nav-text">export 与 import 复合写法</span></a></li></ol></div>
             
 
           </div>

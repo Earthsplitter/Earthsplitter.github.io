@@ -3,9 +3,16 @@
   
     
     <entry>
+      <title><![CDATA[ES6-块级作用域]]></title>
+      <url>%2F2017%2F03%2F11%2FES6-%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
+      <content type="text"><![CDATA[提供了块级作用域。1234567在`for`循环中，每一次循环，循环索引变量都是全新的变量，并且仅存在本次循环中。 for循环中，循环头是循环体的父作用域for (let i = 0; i &lt; 3; i++) &#123; let i = &apos;abc&apos;; console.log(i);&#125; 无暂时性提升，形成死区let声明的变量，在声明前使用会报错，而不是像var一样得到undefined1234567// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2; 当外层和内层定义同名变量，在内层变量声明前调用该变量同样报错123456var tmp = 123;if (true) &#123; tmp = 'abc'; // ReferenceError let tmp;&#125; 重复声明报错同一个块级作用域内，使用let和const声明一个已存在的变量(无论第一次是如何声明的)，报错 函数声明ES6允许在块级作用域声明函数，但是为了兼容性，浏览器行为与规范有所不同 ES6：函数具有块级作用域 ES5（浏览器行为）：函数提升到函数作用域最前。 使用函数赋值语句避免不同的行为差异]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[ES6--模块化]]></title>
       <url>%2F2017%2F03%2F11%2FES6-%E6%A8%A1%E5%9D%97%E5%8C%96%2F</url>
-      <content type="text"><![CDATA[ES6 Module 设计思想与之前社区规范 CommonJS 和 AMD 相比，ES6 的 Module 设计思想强调静态化 带来的优点 12341.静态加载效率更高(按需加载部分内容)2.未来引入宏、类型检查等特性（静态化）3.前后端统一模块化标准4.未来新的浏览器API和扩展功能(Math等)通过模块提供 静态化的要求 1231.只能在顶层作用域完成加载(不允许函数内，分支块内)2.不能在import语句中使用变量3.模块化默认要求严模式(不需要加'use strict') 普通 export import 语法输出 export:1234567891011//输出必须是变量并且变量必须在大括号中export var lastName = 'Jackson';export &#123;firstName, lastName, year&#125;;export lastName //Error！没有大括号！//可以重命名外部接口function v2() &#123; ... &#125;export &#123; v2 as streamV2, v2 as streamLatestVersion&#125;; 输入 import:123456//导入变量必须在大括号中，并且与导出名同名import &#123;firstName, lastName, year&#125; from './profile';//导入重命名import &#123; lastName as surname &#125; from './profile';//使用 * 来进行整体加载，将所有加载的变量赋值到一个对象上import * as circle from './circle'; export default 命令为了快速上手，用户往往没有时间去看文档来学习需要导入的变量名，因此需要通过export default指令来输出 1234function foo() &#123;...&#125;;export default foo;//任意变量名皆可import bar from 'foo'; 本质上是将输出的变量赋值给了一个叫做default的变量，在导入时，default可以被任意命名 12345//以下语句等价export &#123;add as default&#125;;export default add;export default var a = 1; //Error！default本身就是赋值，不能跟声明语句]]></content>
+      <content type="text"><![CDATA[ES6 Module 设计思想与之前社区规范 CommonJS 和 AMD 相比，ES6 的 Module 设计思想强调静态化 带来的优点 12341.静态加载效率更高(按需加载部分内容)2.未来引入宏、类型检查等特性（静态化）3.前后端统一模块化标准4.未来新的浏览器API和扩展功能(Math等)通过模块提供 静态化的要求 1231.只能在顶层作用域完成加载(不允许函数内，分支块内)2.不能在import语句中使用变量3.模块化默认要求严模式(不需要加'use strict') 普通 export import 语法输出 export:1234567891011//输出必须是变量并且变量必须在大括号中export var lastName = 'Jackson';export &#123;firstName, lastName, year&#125;;export lastName //Error！没有大括号！//可以重命名外部接口function v2() &#123; ... &#125;export &#123; v2 as streamV2, v2 as streamLatestVersion&#125;; 输入 import:123456//导入变量必须在大括号中，并且与导出名同名import &#123;firstName, lastName, year&#125; from './profile';//导入重命名import &#123; lastName as surname &#125; from './profile';//使用 * 来进行整体加载，将所有加载的变量赋值到一个对象上import * as circle from './circle'; export default 命令为了快速上手，用户往往没有时间去看文档来学习需要导入的变量名，因此需要通过export default指令来输出 1234function foo() &#123;...&#125;;export default foo;//任意变量名皆可import bar from 'foo'; 本质上是将输出的变量赋值给了一个叫做default的变量，在导入时，default可以被任意命名 12345//以下语句等价export &#123;add as default&#125;;export default add;export default var a = 1; //Error！default本身就是赋值，不能跟声明语句 export 与 import 复合写法export { foo, bar } from &#39;my_module&#39;; 等价于 import { foo, bar } from &apos;my_module&apos;; export { foo, bar };]]></content>
     </entry>
 
     
