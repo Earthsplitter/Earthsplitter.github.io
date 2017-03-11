@@ -286,7 +286,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T13:41:53+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T13:51:44+08:00">
                 2017-03-11
               </time>
             
@@ -324,7 +324,7 @@
       
         
           
-            <h2 id="Browser"><a href="#Browser" class="headerlink" title="Browser"></a>Browser</h2><h4 id="1-浏览器引擎"><a href="#1-浏览器引擎" class="headerlink" title="1. 浏览器引擎"></a>1. 浏览器引擎</h4><ol>
+            <h1 id="1-Browser"><a href="#1-Browser" class="headerlink" title="1. Browser"></a>1. Browser</h1><h4 id="1-浏览器引擎"><a href="#1-浏览器引擎" class="headerlink" title="1. 浏览器引擎"></a>1. 浏览器引擎</h4><ol>
 <li>渲染引擎：获取解析网页内容，构建DOM、CSS等，计算网页layout，绘制网页</li>
 <li>JavaScript引擎：解释执行JavaScript</li>
 </ol>
@@ -334,7 +334,7 @@
 <li><code>Gecko</code>: Firefox系</li>
 <li><code>WebKit</code>: Safari系，以及魔改版Webkit的Chrome</li>
 </ul>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><h4 id="1-HTML5新特性"><a href="#1-HTML5新特性" class="headerlink" title="1. HTML5新特性"></a>1. HTML5新特性</h4><ul>
+<h1 id="2-HTML"><a href="#2-HTML" class="headerlink" title="2. HTML"></a>2. HTML</h1><h4 id="1-HTML5新特性"><a href="#1-HTML5新特性" class="headerlink" title="1. HTML5新特性"></a>1. HTML5新特性</h4><ul>
 <li>语义化标签</li>
 <li>音频视频API</li>
 <li>Canvas API</li>
@@ -367,7 +367,7 @@
 <li>NETWORK:表示在它下面列出来的资源只有在在线的情况下才能访问，他们不会被离线存储</li>
 <li>FALLBACK: 如果第一个资源访问失败，就访问第二个资源替代</li>
 </ol>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><h4 id="1-盒模型"><a href="#1-盒模型" class="headerlink" title="1. 盒模型"></a>1. 盒模型</h4><p>content + padding + border + margin</p>
+<h1 id="3-CSS"><a href="#3-CSS" class="headerlink" title="3. CSS"></a>3. CSS</h1><h4 id="1-盒模型"><a href="#1-盒模型" class="headerlink" title="1. 盒模型"></a>1. 盒模型</h4><p>content + padding + border + margin</p>
 <p><code>box-sizing</code>属性: <code>content-box</code>(默认值) or <code>border-box</code>，前者width指定content的宽度，后者width指定了content+padding+border的宽度</p>
 <h4 id="2-块级元素与行内元素"><a href="#2-块级元素与行内元素" class="headerlink" title="2. 块级元素与行内元素"></a>2. 块级元素与行内元素</h4><p><code>display: block</code>块级元素具有自定义的width、height属性，并且左右换行</p>
 <p><code>display: inline</code>行内元素不具有width等属性，由内容撑开，左右不换行</p>
@@ -402,7 +402,7 @@
 <li><code>absolute</code>：相对于非static的最近祖先</li>
 <li><code>fixed</code>：相对于浏览器窗口</li>
 </ol>
-<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h4 id="1-延迟加载JS的方法"><a href="#1-延迟加载JS的方法" class="headerlink" title="1. 延迟加载JS的方法"></a>1. 延迟加载JS的方法</h4><ul>
+<h1 id="4-JavaScript"><a href="#4-JavaScript" class="headerlink" title="4. JavaScript"></a>4. JavaScript</h1><h4 id="1-延迟加载JS的方法"><a href="#1-延迟加载JS的方法" class="headerlink" title="1. 延迟加载JS的方法"></a>1. 延迟加载JS的方法</h4><ul>
 <li>defer 和 async</li>
 <li>动态创建DOM，创建script标签，设置src属性并插入DOM tree</li>
 </ul>
@@ -502,7 +502,7 @@
 <li>根据patch数组，对真实DOM进行操作。</li>
 </ol>
 <h4 id="21-如何让接受多个参数的函数接受一个数组作为参数-例如-Math-max"><a href="#21-如何让接受多个参数的函数接受一个数组作为参数-例如-Math-max" class="headerlink" title="21. 如何让接受多个参数的函数接受一个数组作为参数(例如 Math.max)"></a>21. 如何让接受多个参数的函数接受一个数组作为参数(例如 Math.max)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法1</span></div><div class="line"><span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);</div><div class="line"><span class="comment">//方法2 ES6</span></div><div class="line"><span class="built_in">Math</span>.max(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]);</div></pre></td></tr></table></figure>
-<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><h4 id="1-SQL注入"><a href="#1-SQL注入" class="headerlink" title="1. SQL注入"></a>1. SQL注入</h4><p>通过把SQL命令插入到Web表单中递交，或插入到输入包含查询字符串（query string）的 url，最终达到欺骗服务器执行恶意的SQL命令</p>
+<h1 id="5-安全"><a href="#5-安全" class="headerlink" title="5. 安全"></a>5. 安全</h1><h4 id="1-SQL注入"><a href="#1-SQL注入" class="headerlink" title="1. SQL注入"></a>1. SQL注入</h4><p>通过把SQL命令插入到Web表单中递交，或插入到输入包含查询字符串（query string）的 url，最终达到欺骗服务器执行恶意的SQL命令</p>
 <p>前端需要做到：</p>
 <ol>
 <li>永远不信任用户输入，在后端对用户输入校验</li>
