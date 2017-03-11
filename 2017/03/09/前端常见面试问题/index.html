@@ -113,7 +113,7 @@ Gecko: Firefox系
 WebKit: Safari系，以及魔改版Webkit的Chrome
 
 HTM">
-<meta property="og:updated_time" content="2017-03-11T12:06:06.000Z">
+<meta property="og:updated_time" content="2017-03-11T12:07:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端常见面试问题">
 <meta name="twitter:description" content="Browser浏览器引擎
@@ -599,7 +599,8 @@ HTM">
 </li>
 <li>5**：服务器内部错误</li>
 </ol>
-<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>WebSocket是一种兼容现有浏览器握手规范的新协议。用于实现低延迟的长链接，双方都可以随意发送数据。解决了以往需要用AJAX长轮询实现的推送，并且为浏览器FPS等低延迟需求带来可能。</p>
+<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>在HTTP中，链接必须严格遵守1 request 1 response的规范，并具有HTTP header开销</p>
+<p>WebSocket是一种兼容现有浏览器握手规范的新协议。用于实现低延迟的长链接，双方都可以随意发送数据。解决了以往需要用AJAX长轮询实现的推送，并且为浏览器FPS等低延迟需求带来可能。</p>
 <p>缺点目前主要是浏览器兼容性，服务器维持长链接也需要一定成本。</p>
 <h1 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h1><h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>通过把SQL命令插入到Web表单中递交，或插入到输入包含查询字符串（query string）的 url，最终达到欺骗服务器执行恶意的SQL命令</p>
 <p>前端需要做到：</p>
