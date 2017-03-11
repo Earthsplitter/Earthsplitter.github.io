@@ -182,7 +182,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <h1 class="site-subtitle" itemprop="description"></h1>
       
   </div>
 
@@ -304,7 +304,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/11/JavaScript模块化--CommonJS, AMD and CMD/">
+    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/11/ES6-模块化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ming Wen">
@@ -321,17 +321,17 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
             
             
               
                 
-                <a class="post-title-link" href="/2017/03/11/JavaScript模块化--CommonJS, AMD and CMD/" itemprop="url">
-                  JavaScript模块化--CommonJS, AMD and CMD
+                <a class="post-title-link" href="/2017/03/11/ES6-模块化/" itemprop="url">
+                  ES6--模块化
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -343,7 +343,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T14:57:58+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-11T16:06:53+08:00">
                 2017-03-11
               </time>
             
@@ -362,8 +362,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/11/JavaScript模块化--CommonJS, AMD and CMD/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/JavaScript模块化--CommonJS, AMD and CMD/" itemprop="commentCount"></span>
+                <a href="/2017/03/11/ES6-模块化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/11/ES6-模块化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -391,18 +391,14 @@
       
         
           
-          为什么需要模块化
-防止变量名称空间污染
-复杂的业务逻辑需要更好的分解/包装
+          ES6 Module 设计思想与之前社区规范 CommonJS 和 AMD 相比，ES6 的 Module 设计思想强调静态化
 
-没有规范的原始模块化
-对象包裹模块(所有内容暴露在外)
-
-123456789var module1 = new Object(&#123;    _count : 0,    m1 : function ()&#123; 
+带来的优点
+12341.静态加载效率更高(按需加载部分内容)2.未来引入宏、类型检查等特性（静态化）3.前后端统一模块化标准4.未来新的浏览器API和扩展功能(Math等
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/11/JavaScript模块化--CommonJS, AMD and CMD/#more" rel="contents">
+            <a class="btn" href="/2017/03/11/ES6-模块化/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -462,7 +458,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
             
             
               
@@ -472,7 +468,7 @@
                 </a>
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -577,6 +573,147 @@ Gecko
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/08/JavaScript模块化--CommonJS, AMD and CMD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ming Wen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/portrait.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wen's 前端随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/08/JavaScript模块化--CommonJS, AMD and CMD/" itemprop="url">
+                  JavaScript模块化--CommonJS, AMD and CMD
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T14:57:58+08:00">
+                2017-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/08/JavaScript模块化--CommonJS, AMD and CMD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/JavaScript模块化--CommonJS, AMD and CMD/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          为什么需要模块化
+防止变量名称空间污染
+复杂的业务逻辑需要更好的分解/包装
+
+没有规范的原始模块化
+对象包裹模块(所有内容暴露在外)
+
+123456789var module1 = new Object(&#123;    _count : 0,    m1 : function ()&#123; 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/08/JavaScript模块化--CommonJS, AMD and CMD/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -614,15 +751,15 @@ Gecko
                alt="Ming Wen" />
           <p class="site-author-name" itemprop="name">Ming Wen</p>
            
-              <p class="site-description motion-element" itemprop="description">Stay humble. Stay foolish.</p>
-          
+              <p class="site-description motion-element" itemprop="description"></p>
+           
         </div>
         <nav class="site-state motion-element">
 
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -635,7 +772,7 @@ Gecko
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
