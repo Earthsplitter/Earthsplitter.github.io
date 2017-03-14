@@ -113,7 +113,7 @@ Gecko: Firefox系
 WebKit: Safari系，以及魔改版Webkit的Chrome
 
 HTM">
-<meta property="og:updated_time" content="2017-03-13T10:51:41.000Z">
+<meta property="og:updated_time" content="2017-03-14T11:06:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端常见面试问题">
 <meta name="twitter:description" content="Browser浏览器引擎
@@ -488,11 +488,16 @@ HTM">
 <h2 id="CSS选择器和权重"><a href="#CSS选择器和权重" class="headerlink" title="CSS选择器和权重"></a>CSS选择器和权重</h2><p>2.ID选择器 &gt; 1.class选择器 &gt; 0.元素选择器</p>
 <p>同优先级最后一个覆盖前一个</p>
 <h2 id="垂直-水平居中的实现方法"><a href="#垂直-水平居中的实现方法" class="headerlink" title="垂直/水平居中的实现方法"></a>垂直/水平居中的实现方法</h2><p><em>方法一：</em> 利用绝对定位<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.vertical</span> &#123;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%,-50%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><em>方法二：</em> 利用table的效果<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#wrapper</span> &#123;</div><div class="line">    <span class="attribute">display</span>: table;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#cell</span> &#123;</div><div class="line">    <span class="attribute">display</span>: table-cell;</div><div class="line">    <span class="attribute">vertical-align</span>: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>方法二：</em> 利用table的效果(父级container高度自适应)<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#wrapper</span> &#123;</div><div class="line">    <span class="attribute">display</span>: table;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-id">#cell</span> &#123;</div><div class="line">    <span class="attribute">display</span>: table-cell;</div><div class="line">    <span class="attribute">vertical-align</span>: middle;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p><em>方法三：</em> flex布局</p>
 <p>通过<code>align-self: center</code>属性实现交叉轴（竖直方向）的居中</p>
 <p><em>单行文字垂直居中：</em></p>
 <p>设置<code>line-height</code>与<code>height</code>相等</p>
+<p><em>多行文字垂直居中：</em></p>
+<ol>
+<li>设置<code>padding-top</code>等于<code>padding-bottom</code></li>
+<li>设置一个<code>span</code>包围多行文字，设置<code>span</code>为<code>diplay:block</code>，然后可以设置<code>vertical-align</code></li>
+</ol>
 <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="延迟加载JS的方法"><a href="#延迟加载JS的方法" class="headerlink" title="延迟加载JS的方法"></a>延迟加载JS的方法</h2><ul>
 <li>defer 和 async</li>
 <li>动态创建DOM，创建script标签，设置src属性并插入DOM tree</li>
