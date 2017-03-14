@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[ES6-Class]]></title>
+      <url>%2F2017%2F03%2F14%2FES6-Class%2F</url>
+      <content type="text"><![CDATA[Class Syntax in ES6概述在ES6中，可以通过Class来声明构造函数，可以认为Class是过去构造器写法的一种语法糖 123class a &#123;&#125;typeof a; //"function" 声明语法在Class中，依然存在prototype，依然是通过new关键字来声明一个实例 123456789101112class Point &#123; //constructor类似于之前的构造函数，实例变量在此声明 //事实上constructor方法在prototype上，指向类本身，与ES5一致 constructor(x, y) &#123; this.x = x; this.y = y; &#125; //实例方法，此处是声明在prototype上,可以采用表达式作为函数名 toString() &#123; //...... &#125;&#125; ES6不一致行为 在类内部(如上面的toString)定义的方法，在ES6中默认为不可枚举的，而ES5中prototype上的方法是可枚举的 1234//ES 6Object.keys(Point.prototype); // []//ES 5Object.keys(Point.prototype); // ["toString"] 用Class声明的类必须使用new实例化，不能直接当作函数调用，否则报错 为了保证子类声明在父类之后，Class不存在变量提升 立即执行Class12345678let person = new class &#123; constructor(name) &#123; this.name = name; &#125; sayName() &#123; console.log(this.name); &#125;&#125;('张三'); 绑定实例方法上下文实例方法执行时可能会丢失他指向的this(默认是该实例)123const logger = new Logger();const &#123; printName &#125; = logger;printName(); // TypeError: Cannot read property 'print' of undefined 解决方法有2: this.printName = this.printName.bind(this) 使用箭头函数，箭头函数捕获上下文]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[ES6-块级作用域]]></title>
       <url>%2F2017%2F03%2F11%2FES6-%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%2F</url>
       <content type="text"><![CDATA[提供了块级作用域。1234567在`for`循环中，每一次循环，循环索引变量都是全新的变量，并且仅存在本次循环中。 for循环中，循环头是循环体的父作用域for (let i = 0; i &lt; 3; i++) &#123; let i = &apos;abc&apos;; console.log(i);&#125; 无暂时性提升，形成死区let声明的变量，在声明前使用会报错，而不是像var一样得到undefined1234567// var 的情况console.log(foo); // 输出undefinedvar foo = 2;// let 的情况console.log(bar); // 报错ReferenceErrorlet bar = 2; 当外层和内层定义同名变量，在内层变量声明前调用该变量同样报错123456var tmp = 123;if (true) &#123; tmp = 'abc'; // ReferenceError let tmp;&#125; 重复声明报错同一个块级作用域内，使用let和const声明一个已存在的变量(无论第一次是如何声明的)，报错 函数声明ES6允许在块级作用域声明函数，但是为了兼容性，浏览器行为与规范有所不同 ES6：函数具有块级作用域 ES5（浏览器行为）：函数提升到函数作用域最前。 使用函数赋值语句避免不同的行为差异]]></content>
