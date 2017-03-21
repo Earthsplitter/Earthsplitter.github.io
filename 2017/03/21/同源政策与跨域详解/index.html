@@ -105,7 +105,7 @@
 端口相同
 
 以下行为受到限制(通常是跨域读操作)">
-<meta property="og:updated_time" content="2017-03-21T04:48:18.000Z">
+<meta property="og:updated_time" content="2017-03-21T04:56:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同源政策与跨域详解">
 <meta name="twitter:description" content="跨域的应用场景在 Web2.0 时代，许多应用需要聚合信息(比如来自google, 来自wikipedia的内容)，因此来自A站点的网页，往往需要读取来自B的内容，这是受到同源策略约束的。
@@ -431,7 +431,16 @@
 <p>这一解决方法的缺点主要在于需要使用<code>iframe</code>并且监听子窗口，影响了网页的性能</p>
 <h2 id="window-postMessage"><a href="#window-postMessage" class="headerlink" title="window.postMessage"></a>window.postMessage</h2><p>HTML5中引入, 用于跨域的父子窗口通信，不受同源策略限制.<br>通过<code>postMessage</code> API可以实现对存储的读写，DOM的操作等</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> popup = <span class="built_in">window</span>.open(<span class="string">'http://bbb.com'</span>, <span class="string">'title'</span>);</div><div class="line"><span class="comment">//父窗口向子窗口发送消息</span></div><div class="line">popup.postMessage(<span class="string">'Hello World!'</span>, <span class="string">'http://bbb.com'</span>);</div><div class="line"><span class="comment">//子窗口向父窗口发送消息</span></div><div class="line"><span class="built_in">window</span>.opener.postMessage(<span class="string">'Nice to see you'</span>, <span class="string">'http://aaa.com'</span>);</div><div class="line"><span class="comment">//父子都可以监听message事件响应</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(e.data);</div><div class="line">&#125;,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
-<h1 id="AJAX跨域"><a href="#AJAX跨域" class="headerlink" title="AJAX跨域"></a>AJAX跨域</h1><h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2>
+<h1 id="AJAX跨域"><a href="#AJAX跨域" class="headerlink" title="AJAX跨域"></a>AJAX跨域</h1><h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>WebSocket通信协议不实行同源政策</p>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><p>JSONP优点是兼容性好，缺点是仅支持get方法具有局限性</p>
+<p>其设计思路是因为浏览器不对 <code>&lt;script&gt;</code> 标签进行限制，因此可以利用这一点来进行跨域请求。</p>
+<ol>
+<li>声明一个回调函数，其参数为要获取(服务器提供的data)，对参数进行操作(比如渲染进DOM)</li>
+<li>create一个<code>&lt;script&gt;</code>标签动态加入DOM tree，在<code>src</code>的URL中向服务器传递该函数名</li>
+<li>服务器返回一个js脚本文件，将数据包括在url中给的回调函数里，运行回调函数</li>
+</ol>
+<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS要求浏览器(&gt;IE10)和服务器的同时支持</p>
+
       
     </div>
 
@@ -480,6 +489,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/21/前端常见面试问题/" rel="prev" title="前端常见面试问题(Keep updating)">
+                前端常见面试问题(Keep updating) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -623,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跨域的应用场景"><span class="nav-number">1.</span> <span class="nav-text">跨域的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是同源政策-same-origin-policy"><span class="nav-number">2.</span> <span class="nav-text">什么是同源政策(same-origin policy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要同源政策"><span class="nav-number">3.</span> <span class="nav-text">为什么需要同源政策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非AJAX的跨站请求"><span class="nav-number">4.</span> <span class="nav-text">非AJAX的跨站请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#document-domain-共享-DOM-与-存储"><span class="nav-number">4.1.</span> <span class="nav-text">document.domain 共享 DOM 与 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-identifier-共享-DOM"><span class="nav-number">4.2.</span> <span class="nav-text">fragment identifier 共享 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-name"><span class="nav-number">4.3.</span> <span class="nav-text">window.name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-postMessage"><span class="nav-number">4.4.</span> <span class="nav-text">window.postMessage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AJAX跨域"><span class="nav-number">5.</span> <span class="nav-text">AJAX跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP"><span class="nav-number">5.1.</span> <span class="nav-text">JSONP</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跨域的应用场景"><span class="nav-number">1.</span> <span class="nav-text">跨域的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是同源政策-same-origin-policy"><span class="nav-number">2.</span> <span class="nav-text">什么是同源政策(same-origin policy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要同源政策"><span class="nav-number">3.</span> <span class="nav-text">为什么需要同源政策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非AJAX的跨站请求"><span class="nav-number">4.</span> <span class="nav-text">非AJAX的跨站请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#document-domain-共享-DOM-与-存储"><span class="nav-number">4.1.</span> <span class="nav-text">document.domain 共享 DOM 与 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-identifier-共享-DOM"><span class="nav-number">4.2.</span> <span class="nav-text">fragment identifier 共享 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-name"><span class="nav-number">4.3.</span> <span class="nav-text">window.name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-postMessage"><span class="nav-number">4.4.</span> <span class="nav-text">window.postMessage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AJAX跨域"><span class="nav-number">5.</span> <span class="nav-text">AJAX跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket"><span class="nav-number">5.1.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP"><span class="nav-number">5.2.</span> <span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS"><span class="nav-number">5.3.</span> <span class="nav-text">CORS</span></a></li></ol></li></ol></div>
             
 
           </div>
