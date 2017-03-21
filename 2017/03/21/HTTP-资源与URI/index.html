@@ -105,7 +105,7 @@ U">
 网关: 网关是特殊的服务器，作为中间实体生成或者从其他位置请求资源，包括了各种动态生成返回的服务，例如股票信息等
 
 U">
-<meta property="og:updated_time" content="2017-03-21T09:09:09.000Z">
+<meta property="og:updated_time" content="2017-03-21T09:14:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP--资源与URI">
 <meta name="twitter:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
@@ -412,7 +412,7 @@ U">
 <h1 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h1><p>URI(Uniform Resource Identifier)指一个字符串用于标示某一个互联网资源，类似于资源的身份证</p>
 <p>URI包括了URL(占绝大多数)和URI(未来趋势)</p>
 <h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>URL(Uniform Resource Locator)指的是通过位置相关信息来对一个互联网资源进行标示，当资源(文件)移动位置，就会失去效果</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><scheme>://<user>:<password>@<host>:<port>/<path></path>;<params>?<query>#<frag></frag></query></params></port></host></password></user></scheme></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;</div></pre></td></tr></table></figure>
 <p>一般的URL包含了最重要的3个部分，scheme、host和path</p>
 <p>也有特殊的URL，比如<code>mailto:wmcs@xxx.cn</code>不符合该规则</p>
 <p>path后面的params、query、frag由web的开发者利用</p>
@@ -426,6 +426,9 @@ U">
 <h2 id="URL字符集"><a href="#URL字符集" class="headerlink" title="URL字符集"></a>URL字符集</h2><p>URL仅允许使用ASCII的一个子集，非这个集合内的字符都需要转移，通过一个百分号加十六进制ASCII码完成</p>
 <p>例如空格在URL中为%20。</p>
 <p>包括<code>. ? # %</code>都具有特殊用途，全部表参考书中39页</p>
+<h1 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h1><p>URL具有一个显著的缺点: 当资源移动后，我们无法根据位置来找到他们。人们希望设计一个与位置无关的，永久存在的标记命名一个资源。能够随时随地获取</p>
+<p>URN就是这样思想下的产物，一个资源具有一个始终稳定的名称。但是因为其实现难度(需要对资源登记，追踪，解析URN)始终没有推广与标准化</p>
+<p>PURL(persistent URL)是这个思想的一种URL实现，将URL登记在一个中间层中，当URL改变，更新中间层的缓存，从而始终用一个URL从中间层访问资源，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">对于资源A的URL http://www.hardware.com</div><div class="line">可以注册到中间层 http://purl.org/shop</div><div class="line">当资源A改变URL到 http://www.software.com 时，通知中间层</div><div class="line">我们依然可以用 http://purl.org/shop 访问该资源</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -616,7 +619,7 @@ U">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是资源"><span class="nav-number">1.</span> <span class="nav-text">什么是资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URI"><span class="nav-number">2.</span> <span class="nav-text">URI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL"><span class="nav-number">3.</span> <span class="nav-text">URL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">3.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相对URL"><span class="nav-number">3.3.</span> <span class="nav-text">相对URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL字符集"><span class="nav-number">3.4.</span> <span class="nav-text">URL字符集</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是资源"><span class="nav-number">1.</span> <span class="nav-text">什么是资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URI"><span class="nav-number">2.</span> <span class="nav-text">URI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL"><span class="nav-number">3.</span> <span class="nav-text">URL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">3.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相对URL"><span class="nav-number">3.3.</span> <span class="nav-text">相对URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL字符集"><span class="nav-number">3.4.</span> <span class="nav-text">URL字符集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URN"><span class="nav-number">4.</span> <span class="nav-text">URN</span></a></li></ol></div>
             
 
           </div>
