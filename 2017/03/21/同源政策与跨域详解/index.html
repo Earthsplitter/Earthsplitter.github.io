@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Http,跨域,AJAX," />
 
 
 
@@ -105,7 +105,7 @@
 端口相同
 
 以下行为受到限制(通常是跨域读操作)">
-<meta property="og:updated_time" content="2017-03-21T02:35:17.000Z">
+<meta property="og:updated_time" content="2017-03-21T03:02:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同源政策与跨域详解">
 <meta name="twitter:description" content="跨域的应用场景在 Web2.0 时代，许多应用需要聚合信息(比如来自google, 来自wikipedia的内容)，因此来自A站点的网页，往往需要读取来自B的内容，这是受到同源策略约束的。
@@ -423,10 +423,14 @@
 <p>也可以读取<code>iframe</code>内的DOM节点</p>
 <h2 id="fragment-identifier-共享-DOM"><a href="#fragment-identifier-共享-DOM" class="headerlink" title="fragment identifier 共享 DOM"></a>fragment identifier 共享 DOM</h2><p>fragment identifier 指的是URL中hash符号<code>#</code>后面的内容，不引起页面刷新</p>
 <p>父窗口可以改变子窗口的fragment identifier，反之亦然<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//改变子窗口的url</span></div><div class="line"><span class="keyword">var</span> src = originURL + <span class="string">'#'</span> + data;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'myIFrame'</span>).src = src;</div><div class="line"><span class="comment">//子窗口响应事件</span></div><div class="line"><span class="built_in">window</span>.onhashchange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">//子窗口改变父窗口的hash</span></div><div class="line">parent.location.href= target + <span class="string">"#"</span> + hash;</div></pre></td></tr></table></figure></p>
-<h2 id="window-name"><a href="#window-name" class="headerlink" title="window.name"></a>window.name</h2><p>window.name最早是用来规避cookie缺点设立的(cookie过小, API复杂)</p>
+<h2 id="window-name"><a href="#window-name" class="headerlink" title="window.name"></a>window.name</h2><p>window.name最早是用来规避cookie缺点设立的(cookie过小, API复杂)，window支持2MB以上大小</p>
 <p>name是window的一个属性，无论window的内容如何改变其值不发生变化，因此利用<code>iframe</code>标签页和<code>window.name</code>可以实现跨域</p>
-<p>首先要简单了解<code>iframe</code></p>
-
+<p>首先要简单了解<code>iframe</code>的相关知识，<code>iframe</code>在网页中创建了一个内联框架，通过<code>src</code>属性指向其他网站，每一个<code>iframe</code>都有一个包裹他的<code>window</code>，他是主窗口的子窗口</p>
+<p>由此，跨站方案就非常简单了，我们首先声明一个<code>iframe</code>标签指向跨站的网站，在跨站的页面内设置<code>window.name</code>，当检测到<code>onload</code>(只运行一次)以后把src设置回同域站点然后读取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>);</div><div class="line">iframe.style.display = <span class="string">'none'</span>;</div><div class="line"><span class="keyword">let</span> state = <span class="number">0</span>;   <span class="comment">//用state控制onload只运行一次，避免来回刷新</span></div><div class="line"></div><div class="line">iframe.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (state === <span class="number">0</span>) &#123;</div><div class="line">        state = <span class="number">1</span>;</div><div class="line">        iframe.contentWindow.location = <span class="string">'同源域名'</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (state === <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(iframe.contentWindow.name);</div><div class="line">        <span class="comment">//... do something with data</span></div><div class="line">        <span class="built_in">document</span>.body.removeChild(iframe)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">iframe.src = <span class="string">'跨域站点'</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(iframe)</div></pre></td></tr></table></figure>
+<p>这一解决方法的缺点主要在于需要使用<code>iframe</code>并且监听子窗口，影响了网页的性能</p>
+<h2 id="window-postMessage"><a href="#window-postMessage" class="headerlink" title="window.postMessage"></a>window.postMessage</h2><p>HTML5中引入</p>
+<h1 id="AJAX跨域"><a href="#AJAX跨域" class="headerlink" title="AJAX跨域"></a>AJAX跨域</h1><h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2>
       
     </div>
 
@@ -446,6 +450,16 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Http/" rel="tag"># Http</a>
+          
+            <a href="/tags/跨域/" rel="tag"># 跨域</a>
+          
+            <a href="/tags/AJAX/" rel="tag"># AJAX</a>
+          
+        </div>
       
 
       
@@ -553,7 +567,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -608,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跨域的应用场景"><span class="nav-number">1.</span> <span class="nav-text">跨域的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是同源政策-same-origin-policy"><span class="nav-number">2.</span> <span class="nav-text">什么是同源政策(same-origin policy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要同源政策"><span class="nav-number">3.</span> <span class="nav-text">为什么需要同源政策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非AJAX的跨站请求"><span class="nav-number">4.</span> <span class="nav-text">非AJAX的跨站请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#document-domain-共享-DOM-与-存储"><span class="nav-number">4.1.</span> <span class="nav-text">document.domain 共享 DOM 与 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-identifier-共享-DOM"><span class="nav-number">4.2.</span> <span class="nav-text">fragment identifier 共享 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-name"><span class="nav-number">4.3.</span> <span class="nav-text">window.name</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跨域的应用场景"><span class="nav-number">1.</span> <span class="nav-text">跨域的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是同源政策-same-origin-policy"><span class="nav-number">2.</span> <span class="nav-text">什么是同源政策(same-origin policy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要同源政策"><span class="nav-number">3.</span> <span class="nav-text">为什么需要同源政策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非AJAX的跨站请求"><span class="nav-number">4.</span> <span class="nav-text">非AJAX的跨站请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#document-domain-共享-DOM-与-存储"><span class="nav-number">4.1.</span> <span class="nav-text">document.domain 共享 DOM 与 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-identifier-共享-DOM"><span class="nav-number">4.2.</span> <span class="nav-text">fragment identifier 共享 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-name"><span class="nav-number">4.3.</span> <span class="nav-text">window.name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-postMessage"><span class="nav-number">4.4.</span> <span class="nav-text">window.postMessage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AJAX跨域"><span class="nav-number">5.</span> <span class="nav-text">AJAX跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP"><span class="nav-number">5.1.</span> <span class="nav-text">JSONP</span></a></li></ol></li></ol></div>
             
 
           </div>
