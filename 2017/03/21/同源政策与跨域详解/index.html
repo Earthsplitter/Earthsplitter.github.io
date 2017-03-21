@@ -105,7 +105,7 @@
 端口相同
 
 以下行为受到限制(通常是跨域读操作)">
-<meta property="og:updated_time" content="2017-03-21T05:16:00.000Z">
+<meta property="og:updated_time" content="2017-03-21T05:33:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同源政策与跨域详解">
 <meta name="twitter:description" content="跨域的应用场景在 Web2.0 时代，许多应用需要聚合信息(比如来自google, 来自wikipedia的内容)，因此来自A站点的网页，往往需要读取来自B的内容，这是受到同源策略约束的。
@@ -460,7 +460,23 @@
 <li>Access-Control-Allow-Credentials(可选): 值只能为true表明发送cookie，默认不发送cookie不包含该字段，需要设置<code>xhr.withCredentials = true;</code></li>
 <li>Access-Control-Expose-Headers(可选): <code>XMLHttpRequest.getResponseHeader()</code>方法只可以获取<code>Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma</code>六个基本字段和该头字段指定的字段名的值</li>
 </ol>
-<h3 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h3>
+<h3 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h3><h4 id="预检请求-Preflight"><a href="#预检请求-Preflight" class="headerlink" title="预检请求(Preflight)"></a>预检请求(Preflight)</h4><p>对于非简单请求(非基本<code>Method</code>和<code>Header</code>，需要首先发送一个OPTIONS请求询问服务器是否支持<br>浏览器根据AJAX的请求Method和Header，自动加入字段：</p>
+<ol>
+<li>Origin: 跨域必须指定的Origin</li>
+<li>Access-Control-Request-Method: 指定了请求要用到的方法，比如PUT</li>
+<li>Access-Control-Request-Headers(可选): 一个逗号分隔的字符串，指定了可能的额外Header字段</li>
+</ol>
+<p>服务器检查自身是否支持后，进行回应：</p>
+<ul>
+<li>否定预见请求: 返回没有任何CORS字段(Access-Control)的正常响应，可以用XMLHTTPRequest对象的 <code>onerror</code> 捕捉处理</li>
+<li>肯定预见请求: <pre><code>1. Access-Control-Allow-Methods: GET, POST, PUT (回复支持的方法)
+2. Access-Control-Allow-Headers(如果请求具有): 逗号分隔的字符串，表明服务器支持的所有头信息字段，不限于浏览器在&quot;预检&quot;中请求的字段。
+3. Access-Control-Allow-Credentials: 是否传递cookie，同简单请求
+4. Access-Control-Max-Age(可选): 表面预检的有效期，有效期内不发送预检请求
+</code></pre></li>
+</ul>
+<h4 id="正常请求"><a href="#正常请求" class="headerlink" title="正常请求"></a>正常请求</h4><p>在预检请求之后，正常请求与简单请求类似，请求具有<code>Origin</code>段，回复具有<code>Access-Control-Allow-Origin</code>等字段。</p>
+
       
     </div>
 
@@ -658,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跨域的应用场景"><span class="nav-number">1.</span> <span class="nav-text">跨域的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是同源政策-same-origin-policy"><span class="nav-number">2.</span> <span class="nav-text">什么是同源政策(same-origin policy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要同源政策"><span class="nav-number">3.</span> <span class="nav-text">为什么需要同源政策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非AJAX的跨站请求"><span class="nav-number">4.</span> <span class="nav-text">非AJAX的跨站请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#document-domain-共享-DOM-与-存储"><span class="nav-number">4.1.</span> <span class="nav-text">document.domain 共享 DOM 与 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-identifier-共享-DOM"><span class="nav-number">4.2.</span> <span class="nav-text">fragment identifier 共享 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-name"><span class="nav-number">4.3.</span> <span class="nav-text">window.name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-postMessage"><span class="nav-number">4.4.</span> <span class="nav-text">window.postMessage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AJAX跨域"><span class="nav-number">5.</span> <span class="nav-text">AJAX跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket"><span class="nav-number">5.1.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP"><span class="nav-number">5.2.</span> <span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS"><span class="nav-number">5.3.</span> <span class="nav-text">CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单请求"><span class="nav-number">5.3.1.</span> <span class="nav-text">简单请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非简单请求"><span class="nav-number">5.3.2.</span> <span class="nav-text">非简单请求</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#跨域的应用场景"><span class="nav-number">1.</span> <span class="nav-text">跨域的应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是同源政策-same-origin-policy"><span class="nav-number">2.</span> <span class="nav-text">什么是同源政策(same-origin policy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么需要同源政策"><span class="nav-number">3.</span> <span class="nav-text">为什么需要同源政策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非AJAX的跨站请求"><span class="nav-number">4.</span> <span class="nav-text">非AJAX的跨站请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#document-domain-共享-DOM-与-存储"><span class="nav-number">4.1.</span> <span class="nav-text">document.domain 共享 DOM 与 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fragment-identifier-共享-DOM"><span class="nav-number">4.2.</span> <span class="nav-text">fragment identifier 共享 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-name"><span class="nav-number">4.3.</span> <span class="nav-text">window.name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-postMessage"><span class="nav-number">4.4.</span> <span class="nav-text">window.postMessage</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AJAX跨域"><span class="nav-number">5.</span> <span class="nav-text">AJAX跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket"><span class="nav-number">5.1.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSONP"><span class="nav-number">5.2.</span> <span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS"><span class="nav-number">5.3.</span> <span class="nav-text">CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单请求"><span class="nav-number">5.3.1.</span> <span class="nav-text">简单请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非简单请求"><span class="nav-number">5.3.2.</span> <span class="nav-text">非简单请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预检请求-Preflight"><span class="nav-number">5.3.2.1.</span> <span class="nav-text">预检请求(Preflight)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正常请求"><span class="nav-number">5.3.2.2.</span> <span class="nav-text">正常请求</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
