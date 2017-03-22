@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title><![CDATA[HTTP权威指南笔记]]></title>
+      <url>%2F2017%2F03%2F22%2FHTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0%2F</url>
+      <content type="text"><![CDATA[起因在腾讯的一面之后，深感自身对HTTP细节知识的缺失，包括同源策略和缓存机制的不了解，当天即购入了著名的《HTTP权威指南》 这篇blog是一个索引，整合了我阅读《HTTP权威指南》一书的总结和自己的思考，包含一系列的文章 概述这一部分主要包含了书中的第一部分: 1、2、3、4 章 资源与URI HTTP报文 TCP/HTTP链接 结构这一部分主要包含了书中的第二部分: 5,6,7,8 章 HTTP缓存机制]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[HTTP-缓存机制]]></title>
+      <url>%2F2017%2F03%2F22%2FHTTP-%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%2F</url>
+      <content type="text"><![CDATA[这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里 为什么需要缓存缓存主要解决了四个问题 冗余数据传输: 节约了网络费用 带宽瓶颈: 降低了传输时延(=文件大小/带宽) 瞬间拥塞: 对于一些突发时间, 降低了对服务器的要求, 避免了网络崩溃 距离时延: 降低了传播时延(距离/光纤速度) 缓存结构缓存分为两种: 私有缓存: 浏览器的临时文件 公有缓存: 特殊的代理服务器 拓扑结构又有两种: 层级结构: 越高层次缓存越大, 服务的用户越多, 私有缓存可以认为是第一级缓存 网状缓存/对等缓存: 多个不同组织之间共用缓存, 可以查询对等组织的缓存 缓存处理步骤对于一个代理缓存服务器, 其处理缓存主要由7步构成, 核心在于新鲜度检测与更新 接收、解析、查找 缓存服务器监测到客户端输入，读取数据，在全部报文抵达前开始处理 将请求报文分片解析，格式化为易于分析的数据结构 在自身的存储(内存或者磁盘)中快速寻找该资源副本，如果不存在就访问服务器申请 新鲜度检测新鲜度检测是缓存处理的核心，如果一个资源的副本不够新鲜，就要根据一定的策略向服务器查询该副本是否变化 文档过期 Cache-Control(HTTP/1.1): max-age： 定义一个以秒为最大单位的文档使用期限 1Cache-Control: max-age=484200 Expires(HTTP/1.0+)： 定义一个过期日期，依靠对本机日期(需要精确)和改日期比较确定是否过期 1Expires: Fri, 05 Jul 2002, 05:00:00 GMT 再验证如果同时携带两者，必须同时满足才可以发送304 If-Modified-Since: ：服务器通过比较文件的修改日期和该头部的日期，确定是返回304还是200+文件实体 1If-Modified-Since: Sat, 29 Jun 2002, 14:30:00 GMT If-None-Match: ：因为只用时间可能: 秒不够精确、未发生实际修改、服务器无法判断修改日期。所以资源返回一个ETag标签来标示是否修改 123456//RequestIf-None-Match: &quot;v2.6&quot;//Response304 Not ModifiedETag: &quot;v2.6&quot;Expires: ......(date) 响应、发送、日志 缓存创建响应，其中Date首部使用原始服务器的值让客户端知道这是一个缓存 发送创建的响应 缓存服务器记录与缓存相关数据，如命中率等 缓存控制策略服务器通过Cache-Control和Expires首部来控制客户端的缓存策略 no-Store: 不允许存储本地缓存文件，每次从服务器下载 no-Cache: 允许存储缓存，但是每次都必须与原是服务器进行再验证 max-age: 之前讨论过，表示新鲜度维持时间，=0类似于no-Cache must-revalidate: 有些缓存允许返回过期资源副本，设置该头部后，缓存只允许提供新鲜的副本，过期副本必须验证 Expires: 之前讨论过，依赖于服务器时间，不推荐使用 如果没有设置新鲜度(max-age或Expires): 通常使用一些试探算法进行猜测，如LM算法1新鲜度 = LM因子(比如0.2) * (资源获取时间 - 资源最后修改时间) 如果无法获得最后修改日期，就只能直接设置为1小时或一天了]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[HTTP-TCP与链接管理]]></title>
+      <url>%2F2017%2F03%2F22%2FHTTP-TCP%E4%B8%8E%E9%93%BE%E6%8E%A5%E7%AE%A1%E7%90%86%2F</url>
+      <content type="text"></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[HTTP-报文]]></title>
       <url>%2F2017%2F03%2F21%2FHTTP-%E6%8A%A5%E6%96%87%2F</url>
       <content type="text"><![CDATA[这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里 组成HTTP报文分为两种：请求报文(request message)和响应报文(response message) 每一个报文都有三部分组成： 起始行(start line) 首部(header)，键值对，每一对占一行，最后由一个空行结束(无论有无body部分) 主体(body) 12345678910//请求报文&lt;method&gt; &lt;request-URL&gt; &lt;version&gt;&lt;headers&gt;&lt;entity-body&gt;//响应报文&lt;version&gt; &lt;status&gt; &lt;reason-phrase&gt;&lt;headers&gt;&lt;entity-body&gt; 起始行方法(Method)方法包含GET, HEAD(这2个被认为是安全方法，即不对服务器产生副作用。同时也是HTTP1.1必须实现的两个方法), PUT, POST, TRACE, OPTIONS, DELETE以及扩展方法 GET用于请求服务器中的某个资源，HTTP/1.1中强制要求实现的方法 HEAD与GET方法类似，返回一个只有首部没有主体的响应报文，首部应该与GET返回的一致。HTTP/1.1强制要求实现 主要用于: 判断资源类型Content-Type、大小Context-Length等 PUTPUT命令让服务器在&lt;request-URL&gt;指定的路径创建/更新报文实体的内容，通常操作前需要密码认证 服务器如果操作成功，将返回 201 Created POST用于向服务器发送数据，与PUT的不同在于PUT是直接在服务器的文件上存储数据。 POST也被用来发送表单数据 TRACE一个报文可能经过防火墙、代理、网关或其他应用，TRACE允许客户端查看最终服务器收到的报文，检查是否有修改／损坏 服务器在TRACE响应报文的主体部分携带了他收到的请求，客户端可以对比响应主体中的报文来和自己发出的报文对比 OPTIONS查询服务器支持的方法(Method), 返回在Header里，例如 Allow: GET, POST, PUT。 在跨域CORS中具有应用 DELETE删除指定URL处的资源，但是服务器有可能并没有删除该资源(依然返回200 OK) 扩展方法HTTP允许扩展方法，即规范中没有写，开发者自定义的方法 状态码信息性状态码(100-101)如果客户端要向服务器发送一个大的实体前，发送一个带有头Expect: 100 Continue的报文，在收到100或者一定时间以后直接发送实体 成功状态码(200-206)不同的响应状态码对应不同请求方法(PUT,GET)的回应 重定向状态码(300-307)对于一个移走的资源，返回30x(如301永久移走)，可以附带一个可选的Location:URL头部，浏览器将自动再发送一个到该URL的请求，在使用者未注意到的情况下转入新位置 客户端可以发送一个特殊的If-Modified-Since: Date首部，如果未更改过，浏览器返回304，客户端直接使用本地副本 客户端错误代码(400-417)请求出现错误，比如请求一个不存在的URL(404)，权限不足，格式错误的报文等 服务器错误码(500-505)服务器自身出现了错误，比如某个子元素，网关资源出错等 首部通用首部提供了基本信息和缓存控制策略，请求和响应都可以使用 请求首部包括客户端信息类首部，Accept首部，条件请求首部，安全请求首部(包括Cookie)与代理请求首部 响应首部包括响应信息(时间，服务器版本)首部，协商首部，安全响应首部(Cookie) 实体首部信息首部(Allow和Location等)，内容首部(Content-Type,Length等)，缓存首部(ETag、Expires、Last-Modified)]]></content>
@@ -13,13 +34,6 @@
       <title><![CDATA[HTTP--资源与URI]]></title>
       <url>%2F2017%2F03%2F21%2FHTTP-%E8%B5%84%E6%BA%90%E4%B8%8EURI%2F</url>
       <content type="text"><![CDATA[这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里 什么是资源Web是由资源(Web resource)构成的，资源存放在服务器(Web Server)中，包含： 文件: 包括了各式各样的静态文件，HTML、CSS、JavaScript、图片、音乐、视频 网关: 网关是特殊的服务器，作为中间实体生成或者从其他位置请求资源，包括了各种动态生成返回的服务，例如股票信息等 URIURI(Uniform Resource Identifier)指一个字符串用于标示某一个互联网资源，类似于资源的身份证 URI包括了URL(占绝大多数)和URI(未来趋势) URL定义URL(Uniform Resource Locator)指的是通过位置相关信息来对一个互联网资源进行标示，当资源(文件)移动位置，就会失去效果 语法1&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt; 一般的URL包含了最重要的3个部分，scheme、host和path 也有特殊的URL，比如mailto:wmcs@xxx.cn不符合该规则 path后面的params、query、frag由web的开发者利用 相对URL关于相对URL的具体解析算法在36页，总的来说算法如下： scheme为空说明是相对URL，否则为绝对URL 相对URL继承基础URL(当前环境)的host,user,password,scheme和port 前导为./我理解为是相对当前资源进行跳转, 例如 http://www.a.com/b/c/d.html中，点击./e.html会跳转到http://www.a.com/b/c/e.html 前导为/我理解是基于根domain跳转，例如3中的例子点击/e.html会跳转到http://www.a.com/e.html URL字符集URL仅允许使用ASCII的一个子集，非这个集合内的字符都需要转移，通过一个百分号加十六进制ASCII码完成 例如空格在URL中为%20。 包括. ? # %都具有特殊用途，全部表参考书中39页 URNURL具有一个显著的缺点: 当资源移动后，我们无法根据位置来找到他们。人们希望设计一个与位置无关的，永久存在的标记命名一个资源。能够随时随地获取 URN就是这样思想下的产物，一个资源具有一个始终稳定的名称。但是因为其实现难度(需要对资源登记，追踪，解析URN)始终没有推广与标准化 PURL(persistent URL)是这个思想的一种URL实现，将URL登记在一个中间层中，当URL改变，更新中间层的缓存，从而始终用一个URL从中间层访问资源，例如：1234对于资源A的URL http://www.hardware.com可以注册到中间层 http://purl.org/shop当资源A改变URL到 http://www.software.com 时，通知中间层我们依然可以用 http://purl.org/shop 访问该资源]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[HTTP权威指南笔记]]></title>
-      <url>%2F2017%2F03%2F21%2FHTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0%2F</url>
-      <content type="text"><![CDATA[起因在腾讯的一面之后，深感自身对HTTP细节知识的缺失，包括同源策略和缓存机制的不了解，当天即购入了著名的《HTTP权威指南》 这篇blog是一个索引，整合了我阅读《HTTP权威指南》一书的总结和自己的思考，包含一系列的文章 概述这一部分主要包含了书中的第一部分: 1、2、3、4章 资源与URI HTTP报文]]></content>
     </entry>
 
     
