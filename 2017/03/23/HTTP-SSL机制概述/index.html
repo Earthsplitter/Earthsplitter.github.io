@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="HTTP,前端,TCP," />
+  <meta name="keywords" content="Security,HTTP,前端," />
 
 
 
@@ -87,16 +87,58 @@
 
 
 
-<meta name="description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里">
+<meta name="description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
+需求HTTP协议是透明的，对于现代Web服务，比如支付等业务，需要一种安全机制来避免：
+
+窃听风险：通讯内容被第三方窃听
+篡改风险：第三方篡改通信内容
+冒充风险：第三方冒充身份参与通信
+
+因此需要一种算法来保证：
+
+加密：防止第三方窃听
+完整性：防止内容被篡改
+服务器/客户端认证：防止身份伪造
+效率高, 普适性强
+
+概述网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP-TCP与链接管理">
-<meta property="og:url" content="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/index.html">
+<meta property="og:title" content="HTTP-SSL机制概述">
+<meta property="og:url" content="https://earthsplitter.github.io/2017/03/23/HTTP-SSL机制概述/index.html">
 <meta property="og:site_name" content="Wen's 前端随笔">
-<meta property="og:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里">
-<meta property="og:updated_time" content="2017-03-22T13:01:41.000Z">
+<meta property="og:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
+需求HTTP协议是透明的，对于现代Web服务，比如支付等业务，需要一种安全机制来避免：
+
+窃听风险：通讯内容被第三方窃听
+篡改风险：第三方篡改通信内容
+冒充风险：第三方冒充身份参与通信
+
+因此需要一种算法来保证：
+
+加密：防止第三方窃听
+完整性：防止内容被篡改
+服务器/客户端认证：防止身份伪造
+效率高, 普适性强
+
+概述网">
+<meta property="og:updated_time" content="2017-03-23T11:17:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP-TCP与链接管理">
-<meta name="twitter:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里">
+<meta name="twitter:title" content="HTTP-SSL机制概述">
+<meta name="twitter:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
+需求HTTP协议是透明的，对于现代Web服务，比如支付等业务，需要一种安全机制来避免：
+
+窃听风险：通讯内容被第三方窃听
+篡改风险：第三方篡改通信内容
+冒充风险：第三方冒充身份参与通信
+
+因此需要一种算法来保证：
+
+加密：防止第三方窃听
+完整性：防止内容被篡改
+服务器/客户端认证：防止身份伪造
+效率高, 普适性强
+
+概述网">
 
 
 
@@ -124,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/"/>
+  <link rel="canonical" href="https://earthsplitter.github.io/2017/03/23/HTTP-SSL机制概述/"/>
 
 
 
 
 
-  <title> HTTP-TCP与链接管理 | Wen's 前端随笔 </title>
+  <title> HTTP-SSL机制概述 | Wen's 前端随笔 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +345,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/">
+    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/23/HTTP-SSL机制概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ming Wen">
@@ -324,7 +366,7 @@
             
             
               
-                HTTP-TCP与链接管理
+                HTTP-SSL机制概述
               
             
           </h2>
@@ -339,7 +381,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T10:39:30+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T14:04:54+08:00">
                 2017-03-23
               </time>
             
@@ -358,8 +400,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/23/HTTP-TCP与链接管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/HTTP-TCP与链接管理/" itemprop="commentCount"></span>
+                <a href="/2017/03/23/HTTP-SSL机制概述/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/HTTP-SSL机制概述/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,6 +428,65 @@
 
       
         <p>这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在<a href="https://earthsplitter.github.io/2017/03/22/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/">这里</a></p>
+<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>HTTP协议是透明的，对于现代Web服务，比如支付等业务，需要一种安全机制来避免：</p>
+<ol>
+<li>窃听风险：通讯内容被第三方窃听</li>
+<li>篡改风险：第三方篡改通信内容</li>
+<li>冒充风险：第三方冒充身份参与通信</li>
+</ol>
+<p>因此需要一种算法来保证：</p>
+<ol>
+<li>加密：防止第三方窃听</li>
+<li>完整性：防止内容被篡改</li>
+<li>服务器/客户端认证：防止身份伪造</li>
+<li>效率高, 普适性强</li>
+</ol>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>网景公司最早引入了SSL(Secure Socket Layer)来保证安全性，之后标准化组织接收基于其上推出了TLS(Transport Layer Security)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> ------------             ------------</div><div class="line">|    HTTP    |           |    HTTP    |</div><div class="line"> ------------             ------------</div><div class="line">|     TCP    |           |     SSL    |</div><div class="line"> ------------             ------------</div><div class="line">|     IP     |           |     TCP    |</div><div class="line"> ------------             ------------</div></pre></td></tr></table></figure>
+<p>通过加入一层SSL加密处理消息以后以二进制密文发送给客户端，SSL对于上层像一个黑盒子一样，具体过程在后面探讨</p>
+<h1 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h1><h2 id="对称非公开加密"><a href="#对称非公开加密" class="headerlink" title="对称非公开加密"></a>对称非公开加密</h2><p>对称加密算法指的是加密和解密使用相同密钥的算法。过程示意图：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">明文P ---(加密算法F(密钥k))----&gt; 密文C -----(F(k))----&gt; 明文P</div></pre></td></tr></table></figure></p>
+<p>常见的算法有DES和继任者AES等</p>
+<p>其主要优点是运算速度快，加密和解密过程不需要很长的时间，当要传输较大文件时比较方便</p>
+<p>缺点在于</p>
+<ol>
+<li>每个点对点传输都需要1个密钥，服务器和客户端需要保存大量的密钥</li>
+<li>需要首先传输密钥给对方，可能会泄露密钥</li>
+</ol>
+<h2 id="非对称公开加密"><a href="#非对称公开加密" class="headerlink" title="非对称公开加密"></a>非对称公开加密</h2><p>非对称加密与对称加密特点相反，密钥分为公钥和私钥，公钥公开在某处，发送方都可以获取该密钥对信息加密，私钥只有接收方保管，可以将密文解密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">明文P &lt;-----(公钥ex)-----&gt; 密文C &lt;-----(私钥d)-----&gt; 明文P</div></pre></td></tr></table></figure>
+<p>上图展示了RSA算法的过程，RSA算法是最常见的非对称公开加密算法，其加解密是双向的，即私钥加密可以用公钥解密，公钥加密可以用私钥解密，在数字签名时会用到该特性</p>
+<p>非对称加密解决了对称加密的2个缺点，但是其加密解密速度太慢，因此不适合大文件的加密传输</p>
+<h2 id="数字证书和数字签名"><a href="#数字证书和数字签名" class="headerlink" title="数字证书和数字签名"></a>数字证书和数字签名</h2><p>在上面两种加密算法的基础上，我们实现了防止窃听，但是还需要一个方法来防止篡改，并且证明发送方身份</p>
+<p>数字证书是由权威机构颁发给服务器方，通常包含名称，过期时间，发布者等信息，服务器通过提供证书证明自己身份，就像人出示身份证一样</p>
+<p>为了证明证书的可靠性，需要用到数字签名技术。证书颁发方将证书中的版本号，序列号，签名算法描述，颁发机构，对象名称，对象公钥等通过颁发者的私钥加密后生成数字签名</p>
+<p>当客户端(浏览器)接收到服务器发来的证书后，根据颁发方的公钥(通常已预装在浏览器，对于非权威证书颁发者会出现警告)，解密签名与证书对照，确认证书没有变化。</p>
+<h1 id="TLS过程"><a href="#TLS过程" class="headerlink" title="TLS过程"></a>TLS过程</h1><p>因为RSA效率较低，因此TLS通过握手验证服务器身份并用RSA传递一个对称密钥，之后的主体报文使用该密钥传递，会话结束后销毁</p>
+<p>SSL握手通过4次完成</p>
+<h2 id="ClientHello"><a href="#ClientHello" class="headerlink" title="ClientHello"></a>ClientHello</h2><p>客户端向浏览器提供</p>
+<ol>
+<li>支持的协议版本, TLS1.0-1.3/SSL</li>
+<li>一个用于生成对称加密的随机数</li>
+<li>支持的加密方法</li>
+<li>压缩算法</li>
+</ol>
+<h2 id="ServerHello"><a href="#ServerHello" class="headerlink" title="ServerHello"></a>ServerHello</h2><p>服务器回复</p>
+<ol>
+<li>确认使用的协议版本</li>
+<li>第二个用于生成对称加密的随机数</li>
+<li>确认使用的加密方法，比如RSA公钥加密</li>
+<li>服务器证书</li>
+</ol>
+<h2 id="客户端响应"><a href="#客户端响应" class="headerlink" title="客户端响应"></a>客户端响应</h2><p>客户端回复</p>
+<ol>
+<li>最后一个用于生成对称加密的随机数</li>
+<li>编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送</li>
+<li>客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验</li>
+</ol>
+<h2 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h2><ol>
+<li>编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送</li>
+<li>服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验</li>
+</ol>
+<p>之后所有内容就交由SSL层使用对称密钥加密后传递</p>
 
       
     </div>
@@ -409,11 +510,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Security/" rel="tag"># Security</a>
+          
             <a href="/tags/HTTP/" rel="tag"># HTTP</a>
           
             <a href="/tags/前端/" rel="tag"># 前端</a>
-          
-            <a href="/tags/TCP/" rel="tag"># TCP</a>
           
         </div>
       
@@ -426,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/22/JavaScript设计模式/" rel="next" title="JavaScript设计模式">
-                <i class="fa fa-chevron-left"></i> JavaScript设计模式
+              <a href="/2017/03/23/双向数据绑定/" rel="next" title="双向数据绑定">
+                <i class="fa fa-chevron-left"></i> 双向数据绑定
               </a>
             
           </div>
@@ -435,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/23/双向数据绑定/" rel="prev" title="双向数据绑定">
-                双向数据绑定 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -464,8 +561,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/23/HTTP-TCP与链接管理/"
-           data-title="HTTP-TCP与链接管理" data-url="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/">
+      <div class="ds-thread" data-thread-key="2017/03/23/HTTP-SSL机制概述/"
+           data-title="HTTP-SSL机制概述" data-url="https://earthsplitter.github.io/2017/03/23/HTTP-SSL机制概述/">
       </div>
     
   </div>
@@ -489,8 +586,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/portrait.JPG"
@@ -563,6 +669,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础算法"><span class="nav-number">3.</span> <span class="nav-text">基础算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对称非公开加密"><span class="nav-number">3.1.</span> <span class="nav-text">对称非公开加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非对称公开加密"><span class="nav-number">3.2.</span> <span class="nav-text">非对称公开加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字证书和数字签名"><span class="nav-number">3.3.</span> <span class="nav-text">数字证书和数字签名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TLS过程"><span class="nav-number">4.</span> <span class="nav-text">TLS过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ClientHello"><span class="nav-number">4.1.</span> <span class="nav-text">ClientHello</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServerHello"><span class="nav-number">4.2.</span> <span class="nav-text">ServerHello</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端响应"><span class="nav-number">4.3.</span> <span class="nav-text">客户端响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器响应"><span class="nav-number">4.4.</span> <span class="nav-text">服务器响应</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
