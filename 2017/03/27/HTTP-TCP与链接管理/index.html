@@ -87,16 +87,31 @@
 
 
 
-<meta name="description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里">
+<meta name="description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
+TCP链接TCP是承载HTTP的底层设施，对于前端程序员来说，通常这就是所需要接触和了解的最深的网络层次。
+TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提供了许多服务:
+
+链接性服务: 通过(源IP,源端口,目的IP,目的端口)标示一个链接，不能同时启动2个一样的链接
+可靠数据传输: 通过校验和与ACK响">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP-TCP与链接管理">
-<meta property="og:url" content="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/index.html">
+<meta property="og:url" content="https://earthsplitter.github.io/2017/03/27/HTTP-TCP与链接管理/index.html">
 <meta property="og:site_name" content="Wen's 前端随笔">
-<meta property="og:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里">
-<meta property="og:updated_time" content="2017-03-22T13:01:41.000Z">
+<meta property="og:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
+TCP链接TCP是承载HTTP的底层设施，对于前端程序员来说，通常这就是所需要接触和了解的最深的网络层次。
+TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提供了许多服务:
+
+链接性服务: 通过(源IP,源端口,目的IP,目的端口)标示一个链接，不能同时启动2个一样的链接
+可靠数据传输: 通过校验和与ACK响">
+<meta property="og:updated_time" content="2017-03-27T12:59:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP-TCP与链接管理">
-<meta name="twitter:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里">
+<meta name="twitter:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
+TCP链接TCP是承载HTTP的底层设施，对于前端程序员来说，通常这就是所需要接触和了解的最深的网络层次。
+TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提供了许多服务:
+
+链接性服务: 通过(源IP,源端口,目的IP,目的端口)标示一个链接，不能同时启动2个一样的链接
+可靠数据传输: 通过校验和与ACK响">
 
 
 
@@ -124,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/"/>
+  <link rel="canonical" href="https://earthsplitter.github.io/2017/03/27/HTTP-TCP与链接管理/"/>
 
 
 
@@ -303,7 +318,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/">
+    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/27/HTTP-TCP与链接管理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ming Wen">
@@ -339,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T10:39:30+08:00">
-                2017-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T10:39:30+08:00">
+                2017-03-27
               </time>
             
 
@@ -358,8 +373,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/23/HTTP-TCP与链接管理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/HTTP-TCP与链接管理/" itemprop="commentCount"></span>
+                <a href="/2017/03/27/HTTP-TCP与链接管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/27/HTTP-TCP与链接管理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,6 +401,41 @@
 
       
         <p>这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在<a href="https://earthsplitter.github.io/2017/03/22/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/">这里</a></p>
+<h1 id="TCP链接"><a href="#TCP链接" class="headerlink" title="TCP链接"></a>TCP链接</h1><p>TCP是承载HTTP的底层设施，对于前端程序员来说，通常这就是所需要接触和了解的最深的网络层次。</p>
+<p>TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提供了许多服务:</p>
+<ol>
+<li>链接性服务: 通过(源IP,源端口,目的IP,目的端口)标示一个链接，不能同时启动2个一样的链接</li>
+<li>可靠数据传输: 通过校验和与ACK响应来保证数据的无损，有序到达</li>
+<li>拥塞控制: 通过慢启动和侦测丢包率控制发包速度避免网络堵塞</li>
+<li>流量控制: 根据窗口大小控制数据速度，防止接收方缓存溢出</li>
+</ol>
+<p>理解TCP的开销对理解HTTP性能非常重要</p>
+<h1 id="HTTP链接时延"><a href="#HTTP链接时延" class="headerlink" title="HTTP链接时延"></a>HTTP链接时延</h1><p>在没有任何优化的情况下，一个HTTP链接需要2个RTT</p>
+<blockquote>
+<p>RTT: Round Trip Time 指从发出请求到收到响应的时间</p>
+</blockquote>
+<p>其中第一个RTT进行TCP前两次握手，第二个RTT完成握手并得到请求的资源</p>
+<p>对于包含数十上百个资源的现代Web站点来说，这样巨大的链接开销是无法承受，尤其是链接遥远的网站。因此人们想出了许多优化方法尽量减少链接数:</p>
+<ol>
+<li>合并JavaScript文件和CSS文件，减少链接请求</li>
+<li>采用Sprite技术，把所有小图标用Photoshop合为一个大图，利用<code>background-position</code>和<code>background-image</code>定位图片</li>
+</ol>
+<p>许多其他的优化技巧参考关于性能优化的文章，显然这些方法笨拙而又局限，因此改进HTTP链接迫在眉睫</p>
+<h1 id="HTTP连接性能的改进"><a href="#HTTP连接性能的改进" class="headerlink" title="HTTP连接性能的改进"></a>HTTP连接性能的改进</h1><p>现代的浏览器和HTTP连接通常采用下面三种方法，以及他们的混合来提高性能，减少时延</p>
+<h2 id="并行连接"><a href="#并行连接" class="headerlink" title="并行连接"></a>并行连接</h2><p>当浏览器解析完初始的HTML文档后，可以并行的使用不同端口开启多个FTP连接来获取资源(如之前所述，四元组又一个不同即可)，因此我们可以看到多个资源的并行加载(图片等)</p>
+<p>主流浏览器(Chrome, Firefox, IE9+)在HTTP/1.1协议下，对于一个域名可以开启最多6个连接</p>
+<p>当带宽是主要瓶颈时，并行连接并不会加快响应速度，但是多个资源(图片)的缓慢加载会给用户一种比单个资源挨个加载更快的错觉，因此使用并行链接总是一个好的方法</p>
+<h2 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a>持久连接</h2><p>HTTP连接依赖于TCP连接的建立，如果每次HTTP请求新开一条TCP连接，n个请求需要2n RTT，如果保持一条TCP连接发送这些HTTP请求，可以节省 (n-1) 个RTT。</p>
+<p>HTTP/1.0 并没有持久连接的选项，因此许多浏览器和服务器自行扩展了许多特性，形成了一个非标准的 HTTP/1.0+ 协议。</p>
+<p>HTTP/1.0+ 通过下述策略完成Keep-Alive:</p>
+<ol>
+<li><code>Connection: Keep-Alive</code> 当浏览器请求和服务器响应同时包含该字段，建立持久连接</li>
+<li><code>Keep-Alive: max=, timeout=</code> 指定持久策略，max指定接下来的HTTP事物数，timeout指定空闲多久关闭</li>
+</ol>
+<p>HTTP/1.0+ 可能会导致一些严重问题，在本文最后部门阐述</p>
+<p>HTTP/1.1 中默认采用持久连接，并且不支持<code>Keep-Alive</code>首部，只有显式指定<code>Connetction: close</code>可以不使用持久连接。持久连接必须设置正确无误的<code>Content-Length</code>首部，因为无法通过关闭连接指示报文是否结束</p>
+<p>无论是HTTP/1.1 还是 HTTP/1.0+ 的持久连接，服务器都能够随时关闭连接，持久连接不是一个保证的承诺</p>
+<h2 id="管道化连接"><a href="#管道化连接" class="headerlink" title="管道化连接"></a>管道化连接</h2><p>HTTP/1.1 允许在持久连接的基础上使用管道连接。管道化连接是</p>
 
       
     </div>
@@ -426,8 +476,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/22/HTTP权威指南笔记/" rel="next" title="HTTP权威指南笔记">
-                <i class="fa fa-chevron-left"></i> HTTP权威指南笔记
+              <a href="/2017/03/24/JavaScript设计模式/" rel="next" title="JavaScript设计模式">
+                <i class="fa fa-chevron-left"></i> JavaScript设计模式
               </a>
             
           </div>
@@ -435,10 +485,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/23/双向数据绑定/" rel="prev" title="双向数据绑定">
-                双向数据绑定 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -464,8 +510,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/23/HTTP-TCP与链接管理/"
-           data-title="HTTP-TCP与链接管理" data-url="https://earthsplitter.github.io/2017/03/23/HTTP-TCP与链接管理/">
+      <div class="ds-thread" data-thread-key="2017/03/27/HTTP-TCP与链接管理/"
+           data-title="HTTP-TCP与链接管理" data-url="https://earthsplitter.github.io/2017/03/27/HTTP-TCP与链接管理/">
       </div>
     
   </div>
@@ -489,8 +535,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/portrait.JPG"
@@ -557,12 +612,42 @@
 
         
         
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://poytr1.github.io/" title="Peterson" target="_blank">Peterson</a>
+                </li>
+              
+            </ul>
+          </div>
+        
 
         
 
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP链接"><span class="nav-number">1.</span> <span class="nav-text">TCP链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP链接时延"><span class="nav-number">2.</span> <span class="nav-text">HTTP链接时延</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP连接性能的改进"><span class="nav-number">3.</span> <span class="nav-text">HTTP连接性能的改进</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并行连接"><span class="nav-number">3.1.</span> <span class="nav-text">并行连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久连接"><span class="nav-number">3.2.</span> <span class="nav-text">持久连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道化连接"><span class="nav-number">3.3.</span> <span class="nav-text">管道化连接</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
