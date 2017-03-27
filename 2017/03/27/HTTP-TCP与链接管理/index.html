@@ -103,7 +103,7 @@ TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提
 
 链接性服务: 通过(源IP,源端口,目的IP,目的端口)标示一个链接，不能同时启动2个一样的链接
 可靠数据传输: 通过校验和与ACK响">
-<meta property="og:updated_time" content="2017-03-27T12:59:53.000Z">
+<meta property="og:updated_time" content="2017-03-27T13:24:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP-TCP与链接管理">
 <meta name="twitter:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
@@ -435,8 +435,9 @@ TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提
 <p>HTTP/1.0+ 可能会导致一些严重问题，在本文最后部门阐述</p>
 <p>HTTP/1.1 中默认采用持久连接，并且不支持<code>Keep-Alive</code>首部，只有显式指定<code>Connetction: close</code>可以不使用持久连接。持久连接必须设置正确无误的<code>Content-Length</code>首部，因为无法通过关闭连接指示报文是否结束</p>
 <p>无论是HTTP/1.1 还是 HTTP/1.0+ 的持久连接，服务器都能够随时关闭连接，持久连接不是一个保证的承诺</p>
-<h2 id="管道化连接"><a href="#管道化连接" class="headerlink" title="管道化连接"></a>管道化连接</h2><p>HTTP/1.1 允许在持久连接的基础上使用管道连接。管道化连接是</p>
-
+<h2 id="管道化连接"><a href="#管道化连接" class="headerlink" title="管道化连接"></a>管道化连接</h2><p>HTTP/1.1 允许在持久连接的基础上使用管道连接。管道化连接是在得到ACK回复前发送多个请求，基于一个TCP连接发送的多个HTTP请求</p>
+<p>管道化不应该用来发送带有副作用的请求，比如POST，避免造成多次影响</p>
+<h1 id="Keep-Alive-与-哑代理"><a href="#Keep-Alive-与-哑代理" class="headerlink" title="Keep-Alive 与 哑代理"></a>Keep-Alive 与 哑代理</h1>
       
     </div>
 
@@ -642,7 +643,7 @@ TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP链接"><span class="nav-number">1.</span> <span class="nav-text">TCP链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP链接时延"><span class="nav-number">2.</span> <span class="nav-text">HTTP链接时延</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP连接性能的改进"><span class="nav-number">3.</span> <span class="nav-text">HTTP连接性能的改进</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并行连接"><span class="nav-number">3.1.</span> <span class="nav-text">并行连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久连接"><span class="nav-number">3.2.</span> <span class="nav-text">持久连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道化连接"><span class="nav-number">3.3.</span> <span class="nav-text">管道化连接</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP链接"><span class="nav-number">1.</span> <span class="nav-text">TCP链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP链接时延"><span class="nav-number">2.</span> <span class="nav-text">HTTP链接时延</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP连接性能的改进"><span class="nav-number">3.</span> <span class="nav-text">HTTP连接性能的改进</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并行连接"><span class="nav-number">3.1.</span> <span class="nav-text">并行连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持久连接"><span class="nav-number">3.2.</span> <span class="nav-text">持久连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道化连接"><span class="nav-number">3.3.</span> <span class="nav-text">管道化连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Keep-Alive-与-哑代理"><span class="nav-number">4.</span> <span class="nav-text">Keep-Alive 与 哑代理</span></a></li></ol></div>
             
 
           </div>
