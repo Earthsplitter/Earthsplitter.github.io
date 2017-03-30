@@ -113,7 +113,7 @@ Fr">
 识别用户身份HTTP首部除了Cookie外，还有一些其他的HTTP首部可以用来发送客户端信息，可以作为了解
 
 Fr">
-<meta property="og:updated_time" content="2017-03-30T07:41:30.000Z">
+<meta property="og:updated_time" content="2017-03-30T10:52:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP-Cookie">
 <meta name="twitter:description" content="HTTP状态HTTP协议是一个无状态的协议，所有内容都位于来往的Request/Response报文之中。
@@ -438,7 +438,16 @@ Fr">
 </ol>
 <h2 id="用户登陆机制"><a href="#用户登陆机制" class="headerlink" title="用户登陆机制"></a>用户登陆机制</h2><p>网站可以使用包括HTTP内建登陆机制在内的登陆机制来识别用户身份</p>
 <p>登陆机制是一种比较完善，安全的状态记录机制，但是对于用户来说，依然不够友好，对于许多轻量级应用(如精准广告投放，购物车)，让用户记录一串密码账号是非常糟糕并且不现实的</p>
-<h2 id="胖URL"><a href="#胖URL" class="headerlink" title="胖URL"></a>胖URL</h2>
+<h2 id="胖URL"><a href="#胖URL" class="headerlink" title="胖URL"></a>胖URL</h2><p>胖URL是一种将用户的身份写在URL里的状态保存方法。当用户第一次连接时，在URL里加入一些特殊内容来标示身份，之后呈现给用户的所有HTML页面的URL连接都被渲染为包含了该ID的特殊URL。</p>
+<p>通过胖URL，亚马逊这样的电商可以追踪用户本次连接访问的商品，实现购物车，精准推荐等功能</p>
+<p>如之前的这些解决方法，胖URL也有着许多缺点：</p>
+<ol>
+<li>无法共享的URL：共享会将自己的身份ID发出去，导致隐私泄露</li>
+<li>加重服务器荷载，服务器需要实时渲染大量不同的HTML页面</li>
+<li>代码难于书写维护，用户容易点击普通URL从而失去身份</li>
+<li>不持久，当用户离开会话再次连接，无法确认上次的身份</li>
+</ol>
+<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1>
       
     </div>
 
@@ -642,7 +651,7 @@ Fr">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP状态"><span class="nav-number">1.</span> <span class="nav-text">HTTP状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别用户身份"><span class="nav-number">2.</span> <span class="nav-text">识别用户身份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址标识"><span class="nav-number">2.2.</span> <span class="nav-text">IP地址标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登陆机制"><span class="nav-number">2.3.</span> <span class="nav-text">用户登陆机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-number">2.4.</span> <span class="nav-text">胖URL</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP状态"><span class="nav-number">1.</span> <span class="nav-text">HTTP状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别用户身份"><span class="nav-number">2.</span> <span class="nav-text">识别用户身份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址标识"><span class="nav-number">2.2.</span> <span class="nav-text">IP地址标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登陆机制"><span class="nav-number">2.3.</span> <span class="nav-text">用户登陆机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-number">2.4.</span> <span class="nav-text">胖URL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie"><span class="nav-number">3.</span> <span class="nav-text">Cookie</span></a></li></ol></div>
             
 
           </div>
