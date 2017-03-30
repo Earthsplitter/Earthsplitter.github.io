@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[HTTP-Cookie]]></title>
+      <url>%2F2017%2F03%2F30%2FHTTP-Cookie%2F</url>
+      <content type="text"><![CDATA[HTTP状态HTTP协议是一个无状态的协议，所有内容都位于来往的Request/Response报文之中。 但是在某些时候，我们希望能够识别用户身份，追踪用户状态/浏览路径来提供一些服务: 个性化的问候和欢迎 精准的商品推荐 存储用户信息，如地址和信用卡信息 会话状态，例如购物车 识别用户身份HTTP首部除了Cookie外，还有一些其他的HTTP首部可以用来发送客户端信息，可以作为了解 From: 字段携带用户Email，因为隐私和对垃圾邮件的顾虑，基本没浏览器会发送该字段 User-Agent: 包含了浏览器版本，操作系统信息等内容，用来定制操作系统相关的信息时很有用 Referer: 提供了跳转之前的网站URL，可以标示访问者的来源 IP地址标识HTTP无法确定]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[HTTP-TCP与链接管理]]></title>
       <url>%2F2017%2F03%2F27%2FHTTP-TCP%E4%B8%8E%E9%93%BE%E6%8E%A5%E7%AE%A1%E7%90%86%2F</url>
       <content type="text"><![CDATA[这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里 TCP链接TCP是承载HTTP的底层设施，对于前端程序员来说，通常这就是所需要接触和了解的最深的网络层次。 TCP与同为传输层的UDP协议相比，速度较慢(延时更大)，因为提供了许多服务: 链接性服务: 通过(源IP,源端口,目的IP,目的端口)标示一个链接，不能同时启动2个一样的链接 可靠数据传输: 通过校验和与ACK响应来保证数据的无损，有序到达 拥塞控制: 通过慢启动和侦测丢包率控制发包速度避免网络堵塞 流量控制: 根据窗口大小控制数据速度，防止接收方缓存溢出 理解TCP的开销对理解HTTP性能非常重要 HTTP链接时延在没有任何优化的情况下，一个HTTP链接需要2个RTT RTT: Round Trip Time 指从发出请求到收到响应的时间 其中第一个RTT进行TCP前两次握手，第二个RTT完成握手并得到请求的资源 对于包含数十上百个资源的现代Web站点来说，这样巨大的链接开销是无法承受，尤其是链接遥远的网站。因此人们想出了许多优化方法尽量减少链接数: 合并JavaScript文件和CSS文件，减少链接请求 采用Sprite技术，把所有小图标用Photoshop合为一个大图，利用background-position和background-image定位图片 许多其他的优化技巧参考关于性能优化的文章，显然这些方法笨拙而又局限，因此改进HTTP链接迫在眉睫 HTTP连接性能的改进现代的浏览器和HTTP连接通常采用下面三种方法，以及他们的混合来提高性能，减少时延 并行连接当浏览器解析完初始的HTML文档后，可以并行的使用不同端口开启多个FTP连接来获取资源(如之前所述，四元组又一个不同即可)，因此我们可以看到多个资源的并行加载(图片等) 主流浏览器(Chrome, Firefox, IE9+)在HTTP/1.1协议下，对于一个域名可以开启最多6个连接 当带宽是主要瓶颈时，并行连接并不会加快响应速度，但是多个资源(图片)的缓慢加载会给用户一种比单个资源挨个加载更快的错觉，因此使用并行链接总是一个好的方法 持久连接HTTP连接依赖于TCP连接的建立，如果每次HTTP请求新开一条TCP连接，n个请求需要2n RTT，如果保持一条TCP连接发送这些HTTP请求，可以节省 (n-1) 个RTT。 HTTP/1.0 并没有持久连接的选项，因此许多浏览器和服务器自行扩展了许多特性，形成了一个非标准的 HTTP/1.0+ 协议。 HTTP/1.0+ 通过下述策略完成Keep-Alive: Connection: Keep-Alive 当浏览器请求和服务器响应同时包含该字段，建立持久连接 Keep-Alive: max=, timeout= 指定持久策略，max指定接下来的HTTP事物数，timeout指定空闲多久关闭 HTTP/1.0+ 可能会导致一些严重问题，在本文最后部门阐述 HTTP/1.1 中默认采用持久连接，并且不支持Keep-Alive首部，只有显式指定Connetction: close可以不使用持久连接。持久连接必须设置正确无误的Content-Length首部，因为无法通过关闭连接指示报文是否结束 无论是HTTP/1.1 还是 HTTP/1.0+ 的持久连接，服务器都能够随时关闭连接，持久连接不是一个保证的承诺 管道化连接HTTP/1.1 允许在持久连接的基础上使用管道连接。管道化连接是在得到ACK回复前发送多个请求，基于一个TCP连接发送的多个HTTP请求 管道化不应该用来发送带有副作用的请求，比如POST，避免造成多次影响 Keep-Alive 与 哑代理之前说到Connection: Keep-Alive头部可能引起一些严重问题，主要出现在代理服务器上 对于一个代理服务器，如果他不只是单纯的转发每一个字节，不进行任何其他处理，那么他就是一个盲中继。当盲中继转发Keep-Alive就导致瘫痪，变成一个哑代理 12345678// 客户端通过盲中继向服务器发送请求Client --(Connection:Keep-Alive)--&gt;&gt; Proxy --(Connection:Keep-Alive)--&gt;&gt; Server// 服务器认为客户端要保持持久连接Server --(Connection:Keep-Alive)--&gt;&gt; Proxy --(Connection:Keep-Alive)--&gt;&gt; Client// 客户端认为这是一个持久连接，继续发送请求，但是盲中继不会处理，他在等待连接的关闭Client --(New Request)--// Proxy(waiting for closing connection) 为避免此类问题，现代代理绝对不能转发Connection首部和其列出的首部名]]></content>
@@ -33,7 +40,7 @@
     <entry>
       <title><![CDATA[HTTP权威指南笔记]]></title>
       <url>%2F2017%2F03%2F22%2FHTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0%2F</url>
-      <content type="text"><![CDATA[起因在腾讯的一面之后，深感自身对HTTP细节知识的缺失，包括同源策略和缓存机制的不了解，当天即购入了著名的《HTTP权威指南》 这篇blog是一个索引，整合了我阅读《HTTP权威指南》一书的总结和自己的思考，包含一系列的文章 基础这一部分主要包含了书中的第一部分: 1、2、3、4 章 资源与URI HTTP报文 TCP/HTTP链接 结构 HTTP缓存机制 高级 HTTPS加密]]></content>
+      <content type="text"><![CDATA[起因在腾讯的一面之后，深感自身对HTTP细节知识的缺失，包括同源策略和缓存机制的不了解，当天即购入了著名的《HTTP权威指南》 这篇blog是一个索引，整合了我阅读《HTTP权威指南》一书的总结和自己的思考，包含一系列的文章 基础这一部分主要包含了书中的第一部分: 1、2、3、4 章 资源与URI HTTP报文 TCP/HTTP链接 结构 HTTP缓存机制 高级 Cookie HTTPS加密]]></content>
     </entry>
 
     
