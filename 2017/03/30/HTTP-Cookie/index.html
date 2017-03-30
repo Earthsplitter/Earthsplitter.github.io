@@ -113,7 +113,7 @@ Fr">
 识别用户身份HTTP首部除了Cookie外，还有一些其他的HTTP首部可以用来发送客户端信息，可以作为了解
 
 Fr">
-<meta property="og:updated_time" content="2017-03-30T12:19:05.000Z">
+<meta property="og:updated_time" content="2017-03-30T12:33:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP-Cookie">
 <meta name="twitter:description" content="HTTP状态HTTP协议是一个无状态的协议，所有内容都位于来往的Request/Response报文之中。
@@ -449,8 +449,20 @@ Fr">
 </ol>
 <h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><p>Cookie是在HTML5的<code>LocalStorage</code>和<code>SessionStorage</code>之前最佳的持久会话实现方式，所有主要浏览器都支持该功能，其将会话状态保存在HTTP首部中</p>
 <p>Cookie是浏览器和服务器实现的一种首部，而不是HTTP/1.1规范里的</p>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>Cookie首部的规范有版本0和版本1两个标准，后者是对前者的加强和扩充</p>
+<h2 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h2><p>Cookie首部的规范有版本0和版本1两个标准，后者是对前者的加强和扩充</p>
 <p>本地Cookie的存储则根据浏览器的不同实现不同，一般作为一个表存储在文件里</p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>Cookie版本0的核心是两个分别在请求和响应中出现的首部:</p>
+<ol>
+<li><code>Set-Cookie: name=value [; expires=date] [; path=path] [; domain=domain] [;secure]</code></li>
+<li><code>Cookie: name=value1 [; name2 = value2]</code></li>
+</ol>
+<p>服务器通过<code>Set-Cookie</code>首部设置 Key-Value Pair，其可选项可以设置一些参数:</p>
+<ol>
+<li>Expires: 不设置过期时间意味着关闭浏览器后消失(会话生命周期)</li>
+<li>Domain: 只向指定域发送Cookie，至少要2-3个dot，不允许<code>.com</code>这类用法，不设置则默认为响应的服务器的主机名</li>
+<li>Path: 在Domain的基础上，与该路径匹配，如<code>/foo</code>与<code>/foo/a</code>, <code>/foo/b</code>匹配，默认为当前响应的路径</li>
+<li>Secure: 如果设置该属性，则只有在HTTPS协议下发送该Cookie</li>
+</ol>
 
       
     </div>
@@ -655,7 +667,7 @@ Fr">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP状态"><span class="nav-number">1.</span> <span class="nav-text">HTTP状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别用户身份"><span class="nav-number">2.</span> <span class="nav-text">识别用户身份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址标识"><span class="nav-number">2.2.</span> <span class="nav-text">IP地址标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登陆机制"><span class="nav-number">2.3.</span> <span class="nav-text">用户登陆机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-number">2.4.</span> <span class="nav-text">胖URL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie"><span class="nav-number">3.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">3.1.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP状态"><span class="nav-number">1.</span> <span class="nav-text">HTTP状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别用户身份"><span class="nav-number">2.</span> <span class="nav-text">识别用户身份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址标识"><span class="nav-number">2.2.</span> <span class="nav-text">IP地址标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登陆机制"><span class="nav-number">2.3.</span> <span class="nav-text">用户登陆机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-number">2.4.</span> <span class="nav-text">胖URL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie"><span class="nav-number">3.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#规范"><span class="nav-number">3.1.</span> <span class="nav-text">规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">3.2.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></div>
             
 
           </div>
