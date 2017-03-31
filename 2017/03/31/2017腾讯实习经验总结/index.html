@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,HTTP," />
+  <meta name="keywords" content="前端,面试," />
 
 
 
@@ -87,34 +87,34 @@
 
 
 
-<meta name="description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
-什么是资源Web是由资源(Web resource)构成的，资源存放在服务器(Web Server)中，包含：
+<meta name="description" content="投递公司从2月开始总共投了:
 
-文件: 包括了各式各样的静态文件，HTML、CSS、JavaScript、图片、音乐、视频
-网关: 网关是特殊的服务器，作为中间实体生成或者从其他位置请求资源，包括了各种动态生成返回的服务，例如股票信息等
-
-U">
+网易游戏: 杳无音讯，目测前端位置也就几个
+阿里内推(菜鸟网络): 投递两周后，无任何面试直接变为已回绝，我校本科生似乎没活过二面的
+美团: 内推没选事业群的全部GG等笔试，笔试通过，因为拿了腾讯Offer鸽了面试
+华为: 本来也不太想去，笔试3/3AC，之后叫做性格测评，因为拿了腾讯Offer鸽了
+网易: 最脑残的公司，笔试后被刷，笔试3/3AC，选择题自我感觉不">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP--资源与URI">
-<meta property="og:url" content="https://earthsplitter.github.io/2017/03/21/HTTP-资源与URI/index.html">
+<meta property="og:title" content="2017腾讯实习经验总结">
+<meta property="og:url" content="https://earthsplitter.github.io/2017/03/31/2017腾讯实习经验总结/index.html">
 <meta property="og:site_name" content="Wen's 前端随笔">
-<meta property="og:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
-什么是资源Web是由资源(Web resource)构成的，资源存放在服务器(Web Server)中，包含：
+<meta property="og:description" content="投递公司从2月开始总共投了:
 
-文件: 包括了各式各样的静态文件，HTML、CSS、JavaScript、图片、音乐、视频
-网关: 网关是特殊的服务器，作为中间实体生成或者从其他位置请求资源，包括了各种动态生成返回的服务，例如股票信息等
-
-U">
-<meta property="og:updated_time" content="2017-03-22T08:51:16.000Z">
+网易游戏: 杳无音讯，目测前端位置也就几个
+阿里内推(菜鸟网络): 投递两周后，无任何面试直接变为已回绝，我校本科生似乎没活过二面的
+美团: 内推没选事业群的全部GG等笔试，笔试通过，因为拿了腾讯Offer鸽了面试
+华为: 本来也不太想去，笔试3/3AC，之后叫做性格测评，因为拿了腾讯Offer鸽了
+网易: 最脑残的公司，笔试后被刷，笔试3/3AC，选择题自我感觉不">
+<meta property="og:updated_time" content="2017-03-31T14:06:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP--资源与URI">
-<meta name="twitter:description" content="这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在这里
-什么是资源Web是由资源(Web resource)构成的，资源存放在服务器(Web Server)中，包含：
+<meta name="twitter:title" content="2017腾讯实习经验总结">
+<meta name="twitter:description" content="投递公司从2月开始总共投了:
 
-文件: 包括了各式各样的静态文件，HTML、CSS、JavaScript、图片、音乐、视频
-网关: 网关是特殊的服务器，作为中间实体生成或者从其他位置请求资源，包括了各种动态生成返回的服务，例如股票信息等
-
-U">
+网易游戏: 杳无音讯，目测前端位置也就几个
+阿里内推(菜鸟网络): 投递两周后，无任何面试直接变为已回绝，我校本科生似乎没活过二面的
+美团: 内推没选事业群的全部GG等笔试，笔试通过，因为拿了腾讯Offer鸽了面试
+华为: 本来也不太想去，笔试3/3AC，之后叫做性格测评，因为拿了腾讯Offer鸽了
+网易: 最脑残的公司，笔试后被刷，笔试3/3AC，选择题自我感觉不">
 
 
 
@@ -142,13 +142,13 @@ U">
 
 
 
-  <link rel="canonical" href="https://earthsplitter.github.io/2017/03/21/HTTP-资源与URI/"/>
+  <link rel="canonical" href="https://earthsplitter.github.io/2017/03/31/2017腾讯实习经验总结/"/>
 
 
 
 
 
-  <title> HTTP--资源与URI | Wen's 前端随笔 </title>
+  <title> 2017腾讯实习经验总结 | Wen's 前端随笔 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +321,7 @@ U">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/21/HTTP-资源与URI/">
+    <link itemprop="mainEntityOfPage" href="https://earthsplitter.github.io/2017/03/31/2017腾讯实习经验总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ming Wen">
@@ -342,7 +342,7 @@ U">
             
             
               
-                HTTP--资源与URI
+                2017腾讯实习经验总结
               
             
           </h2>
@@ -357,8 +357,8 @@ U">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T16:32:19+08:00">
-                2017-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-31T20:36:25+08:00">
+                2017-03-31
               </time>
             
 
@@ -376,8 +376,8 @@ U">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/21/HTTP-资源与URI/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/21/HTTP-资源与URI/" itemprop="commentCount"></span>
+                <a href="/2017/03/31/2017腾讯实习经验总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/31/2017腾讯实习经验总结/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,32 +403,93 @@ U">
       
 
       
-        <p>这是我阅读《HTTP权威指南》的总结和思考中，一系列文章的一篇，目录在<a href="https://earthsplitter.github.io/2017/03/22/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/">这里</a></p>
-<h1 id="什么是资源"><a href="#什么是资源" class="headerlink" title="什么是资源"></a>什么是资源</h1><p>Web是由资源(Web resource)构成的，资源存放在服务器(Web Server)中，包含：</p>
+        <h1 id="投递公司"><a href="#投递公司" class="headerlink" title="投递公司"></a>投递公司</h1><p>从2月开始总共投了:</p>
 <ol>
-<li>文件: 包括了各式各样的静态文件，HTML、CSS、JavaScript、图片、音乐、视频</li>
-<li>网关: 网关是特殊的服务器，作为中间实体生成或者从其他位置请求资源，包括了各种动态生成返回的服务，例如股票信息等</li>
+<li>网易游戏: 杳无音讯，目测前端位置也就几个</li>
+<li>阿里内推(菜鸟网络): 投递两周后，无任何面试直接变为已回绝，我校本科生似乎没活过二面的</li>
+<li>美团: 内推没选事业群的全部GG等笔试，笔试通过，因为拿了腾讯Offer鸽了面试</li>
+<li>华为: 本来也不太想去，笔试3/3AC，之后叫做性格测评，因为拿了腾讯Offer鸽了</li>
+<li>网易: 最脑残的公司，笔试后被刷，笔试3/3AC，选择题自我感觉不是全对也差不多，不知道什么标准</li>
+<li>腾讯: 一周内完成2轮技术面+HR面顺利拿到Offer</li>
 </ol>
-<h1 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h1><p>URI(Uniform Resource Identifier)指一个字符串用于标示某一个互联网资源，类似于资源的身份证</p>
-<p>URI包括了URL(占绝大多数)和URI(未来趋势)</p>
-<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>URL(Uniform Resource Locator)指的是通过位置相关信息来对一个互联网资源进行标示，当资源(文件)移动位置，就会失去效果</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;scheme&gt;://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;frag&gt;</div></pre></td></tr></table></figure>
-<p>一般的URL包含了最重要的3个部分，scheme、host和path</p>
-<p>也有特殊的URL，比如<code>mailto:wmcs@xxx.cn</code>不符合该规则</p>
-<p>path后面的params、query、frag由web的开发者利用</p>
-<h2 id="相对URL"><a href="#相对URL" class="headerlink" title="相对URL"></a>相对URL</h2><p>关于相对URL的具体解析算法在36页，总的来说算法如下：</p>
+<p>从体验上来说，腾讯绝对是最好的公司:</p>
 <ol>
-<li><code>scheme</code>为空说明是相对URL，否则为绝对URL</li>
-<li>相对URL继承基础URL(当前环境)的<code>host</code>,<code>user</code>,<code>password</code>,<code>scheme</code>和<code>port</code></li>
-<li>前导为<code>./</code>我理解为是相对当前资源进行跳转, 例如 <code>http://www.a.com/b/c/d.html</code>中，点击<code>./e.html</code>会跳转到<code>http://www.a.com/b/c/e.html</code></li>
-<li>前导为<code>/</code>我理解是基于根domain跳转，例如3中的例子点击<code>/e.html</code>会跳转到<code>http://www.a.com/e.html</code></li>
+<li>面试过程紧凑，大多数人都是连续面试，反馈良好，相比来看，阿里经常出现20多天后继续面试或者约好时间鸽了的(据说三面是P9太忙)</li>
+<li>没有智障性格测评，上述公司除了网易游戏和腾讯都有性格测评(华为笔试后，美团笔试同时做，其他投递后)，性格测评是一个非常让人恶心，作呕，难受的一个东西</li>
+<li>机会更多，给了大量的面试机会，包括非内推中优秀的简历也有得到面试。不符合标准也不会直接回绝。</li>
+<li>侧重基础。阿里极度看重框架和经验(我校全军覆没)，感觉在面向培训班招人。腾讯在面我的过程中基本都是基础考察(当然自我感觉实战经验和框架反而我更熟悉)</li>
 </ol>
-<h2 id="URL字符集"><a href="#URL字符集" class="headerlink" title="URL字符集"></a>URL字符集</h2><p>URL仅允许使用ASCII的一个子集，非这个集合内的字符都需要转移，通过一个百分号加十六进制ASCII码完成</p>
-<p>例如空格在URL中为%20。</p>
-<p>包括<code>. ? # %</code>都具有特殊用途，全部表参考书中39页</p>
-<h1 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h1><p>URL具有一个显著的缺点: 当资源移动后，我们无法根据位置来找到他们。人们希望设计一个与位置无关的，永久存在的标记命名一个资源。能够随时随地获取</p>
-<p>URN就是这样思想下的产物，一个资源具有一个始终稳定的名称。但是因为其实现难度(需要对资源登记，追踪，解析URN)始终没有推广与标准化</p>
-<p>PURL(persistent URL)是这个思想的一种URL实现，将URL登记在一个中间层中，当URL改变，更新中间层的缓存，从而始终用一个URL从中间层访问资源，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">对于资源A的URL http://www.hardware.com</div><div class="line">可以注册到中间层 http://purl.org/shop</div><div class="line">当资源A改变URL到 http://www.software.com 时，通知中间层</div><div class="line">我们依然可以用 http://purl.org/shop 访问该资源</div></pre></td></tr></table></figure></p>
+<p>值得一提的是，一面的面试官非常的nice。人非常好，面试时态度和善，比较尊重面试者，面试前加了QQ预约时间，后来也经常麻烦他查看状态，非常感激</p>
+<p>不管怎么说，至少比刷了我简历的阿里，网易好</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>不同的部门侧重点必然有所不同，我面的是SNG的QQ空间部门，CSS和HTML基本没问，JavaScript语言方面也只有一点点，核心侧重在HTTP和HTTP相关(安全，跨域)</p>
+<p>时间上，一面45分钟整，五天后，二面40分钟多一点点，二面第二天收到HR面10分钟</p>
+<p>一面和二面之间许多问题具有重叠性，二面也相对深一些(也是我准备的更好一些)，因此我用知识点而不是面试轮次来划分本文</p>
+<p>我之前也写过一篇<a href="https://earthsplitter.github.io/2017/03/21/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/">前端面试题总结</a>，其中不少问题也有覆盖</p>
+<h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><p>一个问题:</p>
+<ol>
+<li>对浏览器兼容了解吗?</li>
+</ol>
+<p>答曰不了解结束。。。后来想了想，可以从浏览器内核答起，回答CSS前缀，Polyfill，Babel这些内容。。</p>
+<h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><p>HTML本身也没有太多的知识点，只问过三个问题:</p>
+<ol>
+<li>你对HTML5了解多少? (二面)</li>
+<li>知道<code>LocalStorage</code>吗? (二面)</li>
+<li>用过WebSocket吗? (二面)</li>
+</ol>
+<p>第一个问题基本包括了HTML5的主要学习内容，我回答了Canvas，语义化概念和标签，HTML5 API(例如History)，Audio和Video支持，WebSocket。<br>因为忘了说LocalStorage所以有了第二个问题。掌握这些内容基本就OK了。<br>对于WebSocket，我直接回答没有用过，知道概念和用途就没有细问了</p>
+<h1 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h1><p>这一点腾讯非常的nice，没有像其他一些公司一样纠结于API背诵，只问了一个问题:</p>
+<ol>
+<li>用过CSS3吗? 实现圆角矩形和阴影怎么做? (二面)</li>
+</ol>
+<p>因为自己也写了比较多的项目，这2个API基本算烙印在心了。面试前还在疯狂看垂直居中的各种奇技淫巧和优缺点对比根本没有用到。</p>
+<p>我个人认为像Animation，盒模型，Flex布局这样的基础内容哪怕没有问，还是要掌握的。总的来说，具有一定的代码量，平常能够完成常规开发肯定是够了</p>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p>JavaScript侧重于其应用而非语法本身，几个问题在一面二面都有出现:</p>
+<ol>
+<li>AJAX概念，用途，<strong>原生API</strong>(XHR对象)</li>
+<li>由AJAX引出跨域，跨域原因，常见方案，实现细节，追问了一个具体情景我没太懂没回答上来 (一面，二面，重中之重)</li>
+<li>什么是闭包，闭包的用途 (一面二面都问了)</li>
+<li>改变函数作用域，bind，apply，call (一面)</li>
+<li>事件冒泡/捕获，事件代理实现 (一面)</li>
+</ol>
+<p>之前准备的各种JavaScript基础都没有用到，诸如各种基础函数(ES5各种函数，比如bind，Object.assign的实现)，原型链继承这些。<br>关于跨域之前也只熟悉JSONP，对CORS有所了解，在一面被问倒后，专门学习了一番，二面感觉发挥比较出色。可以看我的这篇<a href="https://earthsplitter.github.io/2017/03/21/%E5%90%8C%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E8%B7%A8%E5%9F%9F%E8%AF%A6%E8%A7%A3/">跨域详解</a></p>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><p>HTTP和相关的各种内容绝对是腾讯的重中之重:</p>
+<ol>
+<li>HTTP报文格式 (二面)</li>
+<li>HTTP状态码 (一面)</li>
+<li>缓存策略 (一面，重中之重) 与 Cache-Control （二面)</li>
+<li>性能优化 (一面，二面)</li>
+<li>HTTPS和具体实现细节(一面，二面，重中之重)</li>
+<li>常见的攻击和防护策略(一面，二面，我答得很水)</li>
+</ol>
+<p>我之前对HTTP的理解也不是特别深刻，一面当晚购入《HTTP权威指南》，这本书非常的经典详尽，感觉在二面中发挥比较出色。我也写了一系列的<a href="https://earthsplitter.github.io/2017/03/22/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%94%E8%AE%B0/">HTTP权威指南笔记</a></p>
+<p>关于性能优化，可以参考雅虎十四条军规，从四个方面回答:</p>
+<ul>
+<li>优化连接(请求)数</li>
+<li>优化带宽</li>
+<li>缓存利用</li>
+<li>页面结构</li>
+</ul>
+<p>关于攻击和防护，我回答比较水，说学校的课还没有学习。。回答了CSRF，XSS，SQL注入的原理和防范措施</p>
+<h1 id="框架和工具"><a href="#框架和工具" class="headerlink" title="框架和工具"></a>框架和工具</h1><p>框架的相关内容主要在二面的前20分钟询问:</p>
+<ol>
+<li>用过的框架(React和Vue)</li>
+<li>对React的理解 (懵逼，这什么问题，然后就讲了各个特点，思想，VirtualDOM和数据绑定的源代码实现，总之竭力展示自己)</li>
+<li>Vue和React区别 (当时就恨没在电脑边，否则对着Vue官网的那篇文章回答就好了，按照记忆回答了一下)</li>
+</ol>
+<p>工具主要是Babel和Webpack，我个人也不是特别了解其源码实现，一面回答”主要在用。。不懂”</p>
+<p>框架这种东西还是看个人的掌握，我React和Vue都写了几千行的项目，感觉关键是要阅读，理解源代码，尝试自己去实现相关的功能，如果只是泛泛的使用可能还是一个减分项</p>
+<p>这方面我个人写了两篇Blog：<a href="https://earthsplitter.github.io/2017/03/23/%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">双向数据绑定</a>和<a href="https://earthsplitter.github.io/2017/03/24/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">JS设计模式</a></p>
+<h1 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h1><p>主要是网络基础和一点点算法:</p>
+<ol>
+<li>TCP/UDP 区别，特点等内容 (一面，二面)</li>
+<li>TCP握手 (一面，二面)</li>
+<li>HTTP和SSL的端口号 (二面)</li>
+<li>堆排序 (二面)</li>
+<li>判断平衡二叉树 (二面)</li>
+</ol>
+<p>对于科班同学非常简单，但是在二面最后一分钟问了我判断平衡二叉树。。。我当时短路直接忘了什么叫做平衡了。。感觉对不起自己的本科学历</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总的来说涉猎还是非常的广，利用面试也是最快的学习方法。我在一面后3天直接读完了600页的《HTTP权威指南》。</p>
+<p>希望通过这篇文章帮助更多的同学有针对性的学习，提高自己</p>
 
       
     </div>
@@ -454,7 +515,7 @@ U">
           
             <a href="/tags/前端/" rel="tag"># 前端</a>
           
-            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+            <a href="/tags/面试/" rel="tag"># 面试</a>
           
         </div>
       
@@ -467,8 +528,8 @@ U">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/21/前端常见面试问题/" rel="next" title="前端常见面试问题(Keep updating)">
-                <i class="fa fa-chevron-left"></i> 前端常见面试问题(Keep updating)
+              <a href="/2017/03/30/HTTP-Cookie/" rel="next" title="HTTP-Cookie">
+                <i class="fa fa-chevron-left"></i> HTTP-Cookie
               </a>
             
           </div>
@@ -476,10 +537,6 @@ U">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/21/HTTP-报文/" rel="prev" title="HTTP-报文">
-                HTTP-报文 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,8 +562,8 @@ U">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/03/21/HTTP-资源与URI/"
-           data-title="HTTP--资源与URI" data-url="https://earthsplitter.github.io/2017/03/21/HTTP-资源与URI/">
+      <div class="ds-thread" data-thread-key="2017/03/31/2017腾讯实习经验总结/"
+           data-title="2017腾讯实习经验总结" data-url="https://earthsplitter.github.io/2017/03/31/2017腾讯实习经验总结/">
       </div>
     
   </div>
@@ -637,7 +694,7 @@ U">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是资源"><span class="nav-number">1.</span> <span class="nav-text">什么是资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URI"><span class="nav-number">2.</span> <span class="nav-text">URI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL"><span class="nav-number">3.</span> <span class="nav-text">URL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">3.2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相对URL"><span class="nav-number">3.3.</span> <span class="nav-text">相对URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL字符集"><span class="nav-number">3.4.</span> <span class="nav-text">URL字符集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URN"><span class="nav-number">4.</span> <span class="nav-text">URN</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#投递公司"><span class="nav-number">1.</span> <span class="nav-text">投递公司</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器"><span class="nav-number">3.</span> <span class="nav-text">浏览器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5"><span class="nav-number">4.</span> <span class="nav-text">HTML5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS3"><span class="nav-number">5.</span> <span class="nav-text">CSS3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript"><span class="nav-number">6.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">7.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#框架和工具"><span class="nav-number">8.</span> <span class="nav-text">框架和工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机基础"><span class="nav-number">9.</span> <span class="nav-text">计算机基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
