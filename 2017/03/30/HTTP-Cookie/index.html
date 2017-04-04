@@ -113,7 +113,7 @@ Fr">
 识别用户身份HTTP首部除了Cookie外，还有一些其他的HTTP首部可以用来发送客户端信息，可以作为了解
 
 Fr">
-<meta property="og:updated_time" content="2017-04-02T04:44:39.000Z">
+<meta property="og:updated_time" content="2017-04-04T12:22:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP-Cookie">
 <meta name="twitter:description" content="HTTP状态HTTP协议是一个无状态的协议，所有内容都位于来往的Request/Response报文之中。
@@ -476,6 +476,12 @@ Fr">
 <li>客户端再次发送请求到重定向页面</li>
 <li>服务器响应，进入正常入口，通过Cookie追踪身份</li>
 </ol>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>Cookie是目前Client/Server通信最好的方式(<code>LocalStorage</code>必须依靠其他方法向服务器通信), 但是依然有许多缺点:</p>
+<ol>
+<li>大小与个数受限, 通常为4K</li>
+<li>存在风险, 用户和恶意程序可能篡改Cookie</li>
+<li>可能被用户禁用, 导致功能无法使用</li>
+</ol>
 
       
     </div>
@@ -682,7 +688,7 @@ Fr">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP状态"><span class="nav-number">1.</span> <span class="nav-text">HTTP状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别用户身份"><span class="nav-number">2.</span> <span class="nav-text">识别用户身份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址标识"><span class="nav-number">2.2.</span> <span class="nav-text">IP地址标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登陆机制"><span class="nav-number">2.3.</span> <span class="nav-text">用户登陆机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-number">2.4.</span> <span class="nav-text">胖URL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie"><span class="nav-number">3.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#规范"><span class="nav-number">3.1.</span> <span class="nav-text">规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">3.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话过程"><span class="nav-number">3.3.</span> <span class="nav-text">会话过程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP状态"><span class="nav-number">1.</span> <span class="nav-text">HTTP状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#识别用户身份"><span class="nav-number">2.</span> <span class="nav-text">识别用户身份</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-number">2.1.</span> <span class="nav-text">HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址标识"><span class="nav-number">2.2.</span> <span class="nav-text">IP地址标识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登陆机制"><span class="nav-number">2.3.</span> <span class="nav-text">用户登陆机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-number">2.4.</span> <span class="nav-text">胖URL</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie"><span class="nav-number">3.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#规范"><span class="nav-number">3.1.</span> <span class="nav-text">规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">3.2.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#会话过程"><span class="nav-number">3.3.</span> <span class="nav-text">会话过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">3.4.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></div>
             
 
           </div>
